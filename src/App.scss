@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+// Lys tema
+$light-background-color: #ffffff;
+$light-text-color: #000000;
+
+// Mørk tema
+
+$dark-background-color: #171717;
+$dark-text-color: #fffffc;
+
+body {
+    background-color: $light-background-color;
+    color: $light-text-color;
+    font-family: "Comic Neue", cursive;
+    height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  // Styling når mørk tema er aktiveret
+  [data-theme='dark'] {
+    body {
+      background-color: $dark-background-color;
+      color: $dark-text-color;
+    }
+  }

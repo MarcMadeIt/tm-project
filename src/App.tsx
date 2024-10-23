@@ -1,7 +1,12 @@
-import "./App.css";
+import "./App.scss";
+import TopBar from "./components/topbar/TopBar";
 
 function App() {
-	return <></>;
+  return (
+    <>
+      <TopBar />
+    </>
+  );
 }
 
 export default App;
