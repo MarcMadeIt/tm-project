@@ -1,10 +1,25 @@
-button {
-    font-size: 30px;
-    background: none;
-    border: none;
-    outline: none;
 
-    .lightIcon {
-        color: white;   
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    padding: 10px;
+
+
+
+    .center {
+        font-size: 25px;
+        font-weight: 700;
     }
+
+
+
+    .left {
+            .lightIcon {
+                color: white;   
+            }
+    }
+
 }

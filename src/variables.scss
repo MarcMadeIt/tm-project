@@ -1,0 +1,15 @@
+:root {
+    --background-color: #ecfeff;
+    --text-color: #171717;
+    --task-blue: #38bdf8;
+    --border-radius-sp-right: 17px 0 0 17px;
+    --border-radius-sp-left: 0 17px 17px 0;
+    --overlay: #ecfeffb8;
+  }
+  
+  [data-theme="dark"] {
+    --background-color: #171717;
+    --text-color: #ecfeff;
+    --task-blue: #38bff8cb;
+    --overlay: #171717d2;
+  }

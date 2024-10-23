@@ -1,0 +1,45 @@
+.create-task {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+
+    .create-btn {
+        padding: 5px 15px;
+        font-size: 17px;
+    }
+
+
+    .create-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--overlay);
+
+        .create-close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        form {
+            background-color: var(--background-color);
+            border: 1px solid black;
+            height: 80%;
+            width: 80%;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            .create-item {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}

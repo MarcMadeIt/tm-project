@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./TopBar.scss";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
+import { IoMdSettings } from "react-icons/io";
 
 type Theme = "light" | "dark";
 
@@ -17,16 +18,20 @@ const TopBar = () => {
 
   return (
     <div className="topbar">
-      <div className="left"></div>
-      <div className="center"></div>
-      <div className="right">
+      <div className="left">
         <button onClick={toggleTheme}>
           {theme === "light" ? (
-            <MdOutlineDarkMode />
+            <MdOutlineDarkMode size={35} />
           ) : (
-            <MdOutlineLightMode className="lightIcon" />
+            <MdOutlineLightMode size={35} className="lightIcon" />
           )}
         </button>
+      </div>
+      <div className="center">
+        <span>FamilyFlow</span>
+      </div>
+      <div className="right">
+        <IoMdSettings size={35} />
       </div>
     </div>
   );
