@@ -1,18 +1,24 @@
+import { MdCheck, MdEdit } from "react-icons/md";
 import "./Task.scss";
 
 const Task = () => {
   return (
     <div className="task">
       <div className="task-card">
-        <div className="top">Task 1</div>
-        <div className="center">Content</div>
+        <div className="top">
+          <h3>Clean the house</h3>
+        </div>
         <div className="bottom">
-          <button>tryk</button>
+          <span>12. marts 2025</span>
         </div>
       </div>
       <div className="task-action">
-        <span>Done</span>
-        <span>Edit</span>
+        <span>
+          <MdCheck />
+        </span>
+        <span>
+          <MdEdit />
+        </span>
       </div>
     </div>
   );

@@ -13,11 +13,36 @@ input {
     outline: none;
 }
 
+select {
+    background-color: transparent;
+    outline: none;
+}
+
+input[type="date"] {
+    font-family: "Comic Neue", cursive;
+    color: var(--text-color);
+}
+
+input[type="radio"] {
+    transform: scale(1.8);
+    margin-right: 0px;
+}
+
+input[type="radio"] {
+    accent-color: #401c50;
+
+}
+
+
+select {
+    font-family: "Comic Neue", cursive;
+    color: var(--text-color);
+}
+
 
 button {
     cursor: pointer;
     background: none;
     border: none;
     outline: none;
-
 }

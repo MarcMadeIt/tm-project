@@ -8,6 +8,11 @@ const Tasks = () => {
       <Task />
       <Task />
       <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
+      <Task />
     </div>
   );
 };

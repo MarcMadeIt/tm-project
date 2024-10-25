@@ -6,10 +6,10 @@
     box-sizing: border-box;
 }
 
-// body,
-// html {
-//     overflow: hidden;
-// }
+body,
+html {
+     overflow-x: hidden;
+}
 
 html {
     scroll-behavior: smooth;
@@ -20,15 +20,77 @@ body {
     color: var(--text-color);
     font-family: "Comic Neue", cursive;
     height: 100vh;
-    transition: background-color 0.5s, color 0.5s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  top: 0;
+  background-color: var(--background-color);
+}
 
+main {
+  margin: 140px 0 80px 0;
+}
 
-.btn {
-  background-color: var(--task-blue);
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 2;
 }
 
 span {
   color: var(--text-color);
+}
+
+.inp, select {
+  padding: 10px 15px;
+  border: 3px solid var(--foreground-color);
+  border-radius: var(--br);
+  font-size: 15px;
+  color: var(--text-color);
+}
+
+.btn {
+  background-color: var(--action);
+  border-radius: var(--br);
+  color: var(--background-color);
+  transition: all 600ms;
+
+  padding: 10px 25px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.btn:hover {
+  background-color: var(--action-hover);
+  transition: all 600ms;
+}
+
+.btn-light {
+  transition: all 600ms;
+  padding: 5px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+button {
+  color: var(--text-color);
+}
+
+
+@media screen and (min-width: 600px) {
+
+  main {
+    margin-top: 140px;
+  }
+
+  footer {
+    top: 120px;
+    height: 70px;
+  }
+  
 }

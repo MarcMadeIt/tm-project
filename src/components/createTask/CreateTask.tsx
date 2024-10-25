@@ -16,36 +16,65 @@ const CreateTask = () => {
   return (
     <div className="create-task">
       <button onClick={handleCreate} className="create-btn btn">
-        Create New task
+        New task
       </button>
       {open && (
         <div className="create-modal">
-          <span className="create-close">
-            <MdClose onClick={handleClose} size={35} />
-          </span>
           <form action="">
+            <button className="create-close">
+              <MdClose onClick={handleClose} size={35} />
+            </button>
             <h3>Create new Task</h3>
             <div className="create-item">
               <label htmlFor="">Title</label>
-              <input type="text" />
+              <input type="text" className="inp" placeholder="Fx. Clean..." />
             </div>
             <div className="create-item">
-              <label htmlFor="">Desc</label>
-              <input type="text" />
+              <label htmlFor="">Description</label>
+              <input
+                type="text"
+                className="inp"
+                placeholder="Fx. the hall and the toilet..."
+              />
             </div>
             <div className="create-item">
               <label htmlFor="">Deadline</label>
-              <input type="date" />
+              <input type="date" className="inp" />
+            </div>
+            <div className="create-item">
+              <label htmlFor="">What is it about?</label>
+              <select name="category" id="">
+                <option value="" defaultChecked>
+                  Choose Category
+                </option>
+                <option value="high">High</option>
+                <option value="middle">Middle</option>
+                <option value="low">Low</option>
+              </select>
             </div>
             <div className="create-item">
               <label htmlFor="">How important is it?</label>
-              <select name="" id="">
-                <option value="" defaultChecked></option>
-                <option value="">High</option>
-                <option value="">Middle</option>
-                <option value="">Low</option>
-              </select>
+              <div className="create-radio-content">
+                <div className="create-radio-item">
+                  <label htmlFor="">Normal</label>
+                  <input
+                    type="radio"
+                    value="Low"
+                    name="priority"
+                    defaultChecked
+                  />
+                </div>
+                <div className="create-radio-item">
+                  <label htmlFor="">Necessary</label>
+                  <input type="radio" value="Middle" name="priority" />
+                </div>
+                <div className="create-radio-item">
+                  <label htmlFor="">Urgent</label>
+                  <input type="radio" value="High" name="priority" />
+                </div>
+              </div>
             </div>
+            <button className="btn">Add Task</button>
           </form>
         </div>
       )}
