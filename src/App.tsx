@@ -5,6 +5,7 @@ import FilterTasks from "./components/filterTasks/FilterTasks";
 import Tasks from "./components/tasks/Tasks";
 import TopBar from "./components/topbar/TopBar";
 import PreviousTasks from "./components/previousTasks/PreviousTasks";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const [view, setView] = useState("tasks");
@@ -19,8 +20,11 @@ function App() {
         {view === "tasks" && <Tasks />}
         {view === "previous" && <PreviousTasks />}
       </main>
-      <footer>
+      <section>
         <CreateTask />
+      </section>
+      <footer>
+        <Footer />
       </footer>
     </div>
   );
