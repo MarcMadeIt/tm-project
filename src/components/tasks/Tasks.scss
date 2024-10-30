@@ -36,6 +36,10 @@
             @include responsive.tablet  {
                 border-radius: var(--br-container);
             }
+
+            .deadline {
+                left: 10px;
+            }
         }
 
 
@@ -56,6 +60,10 @@
 
             .task-right {
                 text-align: end;
+            }
+
+            .deadline {
+                right: 10px;
             }
         }
     }

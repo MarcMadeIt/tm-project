@@ -1,4 +1,4 @@
-import { MdDone, MdEdit } from "react-icons/md";
+import { MdDone, MdEdit, MdOutlineAccessTime } from "react-icons/md";
 import "./Task.scss";
 
 interface TaskProps {
@@ -23,11 +23,12 @@ const Task = ({ title, desc, date, time, category, priority }: TaskProps) => {
     <div className="task">
       <div className="task-card">
         <div className="task-left">
-          <h2>{title}</h2>
+          <h3>{title}</h3>
           <p>{desc}</p>
         </div>
         <div className="task-right">
-          <p>
+          <p className="deadline">
+            <MdOutlineAccessTime />
             <time dateTime={isoDateTime}>
               {formattedDate} kl. {time}
             </time>

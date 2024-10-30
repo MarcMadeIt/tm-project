@@ -38,10 +38,10 @@ const FirstVisit = () => {
             </div>
           </div>
           <form className="fv-content">
-            <h3>Welcome to FamilyFlow</h3>
+            <h2>Welcome to FamilyFlow!</h2>
             <p>
               Create and share tasks with your family! Just enter your name, and
-              you’re ready to start.
+              you're ready to start.
             </p>
             <label htmlFor="userName"></label>
             <input
