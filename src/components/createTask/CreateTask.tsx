@@ -18,7 +18,7 @@ const CreateTask = () => {
   const [description, setDescription] = useState("");
   const [deadline, setDeadline] = useState("");
   const [category, setCategory] = useState("");
-  const [priority, setPriority] = useState("Low");
+  const [priority, setPriority] = useState("Normal");
 
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
@@ -33,10 +33,10 @@ const CreateTask = () => {
 
     const newTask: Task = { title, description, deadline, category, priority };
     const updatedTasks = [...tasks, newTask];
-    
+
     setTasks(updatedTasks);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-    
+
     setTitle("");
     setDescription("");
     setDeadline("");
@@ -53,7 +53,11 @@ const CreateTask = () => {
       {open && (
         <div className="create-modal">
           <form onSubmit={handleAddTask}>
-            <button type="button" className="create-close" onClick={handleClose}>
+            <button
+              type="button"
+              className="create-close"
+              onClick={handleClose}
+            >
               <MdClose size={35} />
             </button>
             <h3>Create new Task</h3>
@@ -108,9 +112,9 @@ const CreateTask = () => {
                   <label>Normal</label>
                   <input
                     type="radio"
-                    value="Low"
+                    value="Normal"
                     name="priority"
-                    checked={priority === "Low"}
+                    checked={priority === "Normal"}
                     onChange={(e) => setPriority(e.target.value)}
                   />
                 </div>
@@ -118,9 +122,9 @@ const CreateTask = () => {
                   <label>Necessary</label>
                   <input
                     type="radio"
-                    value="Middle"
+                    value="Necessary"
                     name="priority"
-                    checked={priority === "Middle"}
+                    checked={priority === "Necessary"}
                     onChange={(e) => setPriority(e.target.value)}
                   />
                 </div>
@@ -128,9 +132,9 @@ const CreateTask = () => {
                   <label>Urgent</label>
                   <input
                     type="radio"
-                    value="High"
+                    value="Urgent"
                     name="priority"
-                    checked={priority === "High"}
+                    checked={priority === "Urgent"}
                     onChange={(e) => setPriority(e.target.value)}
                   />
                 </div>

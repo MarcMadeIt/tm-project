@@ -4,11 +4,9 @@ const FirstVisit = () => {
   const [isModalVisible, setIsModalVisible] = useState(true);
 
   useEffect(() => {
-    // Tjek om brugeren har besøgt siden før
     const hasVisited = localStorage.getItem("hasVisited");
 
     if (!hasVisited) {
-      // Hvis ikke, vis modalen og gem besøget i localStorage
       setIsModalVisible(true);
       localStorage.setItem("hasVisited", "true");
     }
