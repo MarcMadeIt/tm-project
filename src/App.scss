@@ -1,5 +1,5 @@
-@use './variables.scss';
-@use './responsive.scss';
+@use './variables.scss' as variables;
+@use './responsive.scss' as responsive;
 
 * {
     padding: 0;
@@ -39,7 +39,7 @@ main {
   width: 100%;
   overflow: hidden;
 
-  @include large-mobile {
+  @include responsive.large-mobile {
     margin-top: 140px;
   }
 }
@@ -51,7 +51,7 @@ section {
   bottom: 0;
   z-index: 2;
 
-  @include large-mobile {
+  @include responsive.large-mobile {
     top: 50px;
     height: 70px;
     width: 200px;
