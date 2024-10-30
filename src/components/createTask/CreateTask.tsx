@@ -19,6 +19,7 @@ const CreateTask = () => {
   const [deadline, setDeadline] = useState("");
   const [category, setCategory] = useState("");
   const [priority, setPriority] = useState("Normal");
+  
 
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
@@ -30,21 +31,33 @@ const CreateTask = () => {
 
   const handleAddTask = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+  
     const newTask: Task = { title, description, deadline, category, priority };
+  
+    // Optimistically add the new task
     const updatedTasks = [...tasks, newTask];
-
     setTasks(updatedTasks);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-
+  
+    // Clear the input fields
     setTitle("");
     setDescription("");
     setDeadline("");
     setCategory("");
     setPriority("Low");
     setOpen(false);
+  
+    // Try to update local storage with error handling
+    try {
+      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    } catch (error) {
+      console.error("Failed to save tasks", error);
+      
+      // Rollback to previous state if local storage update fails
+      setTasks(tasks);
+      alert("Error saving task, please try again."); // Optional: Notify user
+    }
   };
-
   return (
     <div className="create-task">
       <button onClick={handleCreate} className="create-btn btn">
