@@ -6,12 +6,14 @@ import Tasks from "./components/tasks/Tasks";
 import TopBar from "./components/topbar/TopBar";
 import PreviousTasks from "./components/previousTasks/PreviousTasks";
 import Footer from "./components/footer/Footer";
+import FirstVisit from "./components/firstVisit/FirstVisit";
 
 function App() {
   const [view, setView] = useState("tasks");
 
   return (
     <div className="app">
+      <FirstVisit />
       <header>
         <TopBar />
         <FilterTasks setView={setView} view={view} />
