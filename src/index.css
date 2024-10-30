@@ -33,6 +33,10 @@ input[type="radio"] {
 
 }
 
+input[type="time"] {
+    font-family: "Comic Neue", cursive;
+}
+
 
 select {
     font-family: "Comic Neue", cursive;

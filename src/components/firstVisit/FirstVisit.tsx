@@ -28,25 +28,35 @@ const FirstVisit = () => {
   return (
     <>
       {isModalVisible && (
-        <div className="firstvisit-modal">
-          <div className="firstvisit-content">
+        <div className="fv-modal">
+          <div className="fv-top">
+            <div className="fv-logo">
+              <img src="src/assets/logo-FF.png" alt="logo" />
+            </div>
+            <div className="fv-logoname">
+              <span>FamilyFlow</span>
+            </div>
+          </div>
+          <form className="fv-content">
             <h3>Welcome to FamilyFlow</h3>
             <p>
               Create and share tasks with your family! Just enter your name, and
               you’re ready to start.
             </p>
-
+            <label htmlFor="userName"></label>
             <input
+              id="userName"
               className="inp"
               type="text"
               placeholder="Type your name"
-              value={userName} // Bind the input value to the state
-              onChange={handleInputChange} // Update state on input change
+              value={userName}
+              onChange={handleInputChange}
+              required
             />
-            <button className="btn" onClick={handleCloseModal}>
+            <button type="submit" className="btn" onClick={handleCloseModal}>
               Create User
             </button>
-          </div>
+          </form>
         </div>
       )}
     </>

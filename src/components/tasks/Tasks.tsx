@@ -4,8 +4,9 @@ import "./Tasks.scss";
 
 interface TaskProps {
   title: string;
-  description: string;
-  deadline: string;
+  desc: string;
+  date: string;
+  time: string;
   category: string;
   priority: string;
 }
@@ -15,7 +16,7 @@ const Tasks = () => {
 
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
-    console.log("Saved tasks from localStorage:", savedTasks); // Log retrieved tasks
+    console.log("Saved tasks from localStorage:", savedTasks);
     if (Array.isArray(savedTasks)) {
       setTasks(savedTasks);
     } else {
@@ -29,8 +30,9 @@ const Tasks = () => {
           <Task
             key={index}
             title={task.title}
-            description={task.description}
-            deadline={task.deadline}
+            desc={task.desc}
+            date={task.date}
+            time={task.time}
             category={task.category}
             priority={task.priority}
           />

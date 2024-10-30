@@ -11,11 +11,12 @@
 
         button {
             border-bottom: 2px solid var(--background-color);
-            color: var();
+            color: var(--text-grey);
         }
         
         .active {
             border-bottom: 2px solid var(--action);
+            color: var(--text-color);
         }
     
     }

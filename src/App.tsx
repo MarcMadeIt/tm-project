@@ -4,7 +4,7 @@ import CreateTask from "./components/createTask/CreateTask";
 import FilterTasks from "./components/filterTasks/FilterTasks";
 import Tasks from "./components/tasks/Tasks";
 import TopBar from "./components/topbar/TopBar";
-import PreviousTasks from "./components/previousTasks/PreviousTasks";
+import CompletedTasks from "./components/completedTasks/CompletedTasks";
 import Footer from "./components/footer/Footer";
 import FirstVisit from "./components/firstVisit/FirstVisit";
 
@@ -20,7 +20,7 @@ function App() {
       </header>
       <main>
         {view === "tasks" && <Tasks />}
-        {view === "previous" && <PreviousTasks />}
+        {view === "previous" && <CompletedTasks />}
       </main>
       <section>
         <CreateTask />

@@ -17,10 +17,10 @@ const FilterTasks = ({ setView, view }: Props) => {
           My Tasks
         </button>
         <button
-          className={`btn-light ${view === "previous" ? "active" : ""}`}
-          onClick={() => setView("previous")}
+          className={`btn-light ${view === "completed" ? "active" : ""}`}
+          onClick={() => setView("completed")}
         >
-          Previous Tasks
+          Completed Tasks
         </button>
       </div>
       <div className="right">

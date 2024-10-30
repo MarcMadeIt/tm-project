@@ -48,11 +48,11 @@ section {
   max-width: 800px;
   position: fixed;
   width: 100%;
-  bottom: 0;
+  bottom: 15px;
   z-index: 2;
 
-  @include responsive.large-mobile {
-    top: 50px;
+  @include responsive.tablet {
+    top: 60px;
     height: 70px;
     width: 200px;
   }
@@ -91,6 +91,11 @@ span, p {
   padding: 10px 25px;
   font-size: 20px;
   font-weight: 700;
+
+  @include responsive.tablet {
+    padding: 7px 17px;
+    font-size: 17px;
+  }
 }
 
 .btn:hover {

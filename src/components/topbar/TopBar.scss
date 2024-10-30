@@ -11,6 +11,19 @@
     .center {
         font-size: 25px;
         font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        .logo-img {
+            width: 30px;
+            height: 30px;
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
     }
 
 

@@ -5,8 +5,9 @@ import { MdClose } from "react-icons/md";
 // Define a Task interface
 interface Task {
   title: string;
-  description: string;
-  deadline: string;
+  desc: string;
+  date: string;
+  time: string;
   category: string;
   priority: string;
 }
@@ -15,11 +16,11 @@ const CreateTask = () => {
   const [open, setOpen] = useState(false);
   const [tasks, setTasks] = useState<Task[]>([]);
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [deadline, setDeadline] = useState("");
+  const [desc, setDesc] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("00:00");
   const [category, setCategory] = useState("");
   const [priority, setPriority] = useState("Normal");
-  
 
   useEffect(() => {
     const savedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
@@ -31,33 +32,38 @@ const CreateTask = () => {
 
   const handleAddTask = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
-    const newTask: Task = { title, description, deadline, category, priority };
-  
+
+    const newTask: Task = {
+      title,
+      desc,
+      date,
+      time,
+      category,
+      priority,
+    };
+
     // Optimistically add the new task
     const updatedTasks = [...tasks, newTask];
     setTasks(updatedTasks);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-  
+
     // Clear the input fields
     setTitle("");
-    setDescription("");
-    setDeadline("");
+    setDesc("");
+    setDate("");
+    setTime("");
     setCategory("");
     setPriority("Low");
     setOpen(false);
-  
-    // Try to update local storage with error handling
+
     try {
       localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     } catch (error) {
       console.error("Failed to save tasks", error);
-      
-      // Rollback to previous state if local storage update fails
       setTasks(tasks);
-      alert("Error saving task, please try again."); // Optional: Notify user
     }
   };
+
   return (
     <div className="create-task">
       <button onClick={handleCreate} className="create-btn btn">
@@ -86,23 +92,35 @@ const CreateTask = () => {
               />
             </div>
             <div className="create-item">
-              <label htmlFor="description">Description</label>
+              <label htmlFor="desc">Description</label>
               <input
+                id="desc"
                 type="text"
                 className="inp"
                 placeholder="Fx. the hall and the toilet..."
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                value={desc}
+                onChange={(e) => setDesc(e.target.value)}
               />
             </div>
-            <div className="create-item">
-              <label htmlFor="deadline">Deadline</label>
-              <input
-                type="date"
-                className="inp"
-                value={deadline}
-                onChange={(e) => setDeadline(e.target.value)}
-              />
+            <div className="create-item ">
+              <label htmlFor="deadline">Need a deadline?</label>
+              <div className="deadline">
+                <input
+                  id="deadline"
+                  type="date"
+                  className="inp"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
+                <input
+                  className="inp"
+                  type="time"
+                  id="deadline"
+                  name="time"
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
+                />
+              </div>
             </div>
             <div className="create-item">
               <label htmlFor="category">What is it about?</label>
@@ -111,11 +129,14 @@ const CreateTask = () => {
                 id="category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+                required
               >
-                <option value="">Choose Category</option>
-                <option value="high">High</option>
-                <option value="middle">Middle</option>
-                <option value="low">Low</option>
+                <option disabled value="">
+                  Choose Category
+                </option>
+                <option value="Home">Home</option>
+                <option value="Family">Family</option>
+                <option value="Health">Health</option>
               </select>
             </div>
             <div className="create-item">

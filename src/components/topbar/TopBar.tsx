@@ -28,6 +28,9 @@ const TopBar = () => {
         </button>
       </div>
       <div className="center">
+        <div className="logo-img">
+          <img src="src/assets/logo-FF.png" alt="logo" />
+        </div>
         <span>FamilyFlow</span>
       </div>
       <div className="right">
