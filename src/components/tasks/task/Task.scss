@@ -15,10 +15,22 @@
         padding: 20px;
         flex: 3;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
         justify-content: space-between;
-    }
 
+
+        .task-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .task-right {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
     
 
     .task-action {

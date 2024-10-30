@@ -3,7 +3,7 @@ import "./Footer.scss";
 const Footer = () => {
   return (
     <div className="footer">
-      <span>FamilyFlow &#169;</span>
+      <span> &#169; 2024 FamilyFlow</span>
     </div>
   );
 };
