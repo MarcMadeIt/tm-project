@@ -23,8 +23,11 @@
 
         .task-card {
             border-radius: var(--border-radius-sp-left);
-            align-items: flex-end;
+            flex-direction: row-reverse;
+
         }
+
+
     }
 
     &:nth-child(odd) {
@@ -35,6 +38,10 @@
 
         .task-card {
             border-radius: var(--border-radius-sp-right);
+
+            .task-right {
+                text-align: end;
+            }
         }
     }
 }

@@ -20,11 +20,15 @@ const Task = ({
   return (
     <div className="task">
       <div className="task-card">
-        <h4>{title}</h4>
-        <p>{description}</p>
-        <p>Deadline: {deadline}</p>
-        <p>{category}</p>
-        <p>{priority}</p>
+        <div className="task-left">
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </div>
+        <div className="task-right">
+          <p>{deadline}</p>
+          <p>{category}</p>
+          <p>{priority}</p>
+        </div>
       </div>
       <div className="task-action">
         <span>
