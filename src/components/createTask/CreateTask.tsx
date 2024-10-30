@@ -1,15 +1,47 @@
-import { useState } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import "./CreateTask.scss";
 import { MdClose } from "react-icons/md";
 
+// Define a Task interface
+interface Task {
+  title: string;
+  description: string;
+  deadline: string;
+  category: string;
+  priority: string;
+}
+
 const CreateTask = () => {
   const [open, setOpen] = useState(false);
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [deadline, setDeadline] = useState("");
+  const [category, setCategory] = useState("");
+  const [priority, setPriority] = useState("Low");
 
-  const handleCreate = () => {
-    setOpen(true);
-  };
+  useEffect(() => {
+    const savedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+    setTasks(savedTasks);
+  }, []);
 
-  const handleClose = () => {
+  const handleCreate = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const handleAddTask = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const newTask: Task = { title, description, deadline, category, priority };
+    const updatedTasks = [...tasks, newTask];
+    
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    
+    setTitle("");
+    setDescription("");
+    setDeadline("");
+    setCategory("");
+    setPriority("Low");
     setOpen(false);
   };
 
@@ -20,61 +52,93 @@ const CreateTask = () => {
       </button>
       {open && (
         <div className="create-modal">
-          <form action="">
-            <button className="create-close">
-              <MdClose onClick={handleClose} size={35} />
+          <form onSubmit={handleAddTask}>
+            <button type="button" className="create-close" onClick={handleClose}>
+              <MdClose size={35} />
             </button>
             <h3>Create new Task</h3>
             <div className="create-item">
-              <label htmlFor="">Title</label>
-              <input type="text" className="inp" placeholder="Fx. Clean..." />
+              <label htmlFor="title">Title</label>
+              <input
+                type="text"
+                className="inp"
+                placeholder="Fx. Clean..."
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
             </div>
             <div className="create-item">
-              <label htmlFor="">Description</label>
+              <label htmlFor="description">Description</label>
               <input
                 type="text"
                 className="inp"
                 placeholder="Fx. the hall and the toilet..."
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </div>
             <div className="create-item">
-              <label htmlFor="">Deadline</label>
-              <input type="date" className="inp" />
+              <label htmlFor="deadline">Deadline</label>
+              <input
+                type="date"
+                className="inp"
+                value={deadline}
+                onChange={(e) => setDeadline(e.target.value)}
+              />
             </div>
             <div className="create-item">
-              <label htmlFor="">What is it about?</label>
-              <select name="category" id="">
-                <option value="" defaultChecked>
-                  Choose Category
-                </option>
+              <label htmlFor="category">What is it about?</label>
+              <select
+                name="category"
+                id="category"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="">Choose Category</option>
                 <option value="high">High</option>
                 <option value="middle">Middle</option>
                 <option value="low">Low</option>
               </select>
             </div>
             <div className="create-item">
-              <label htmlFor="">How important is it?</label>
+              <label>How important is it?</label>
               <div className="create-radio-content">
                 <div className="create-radio-item">
-                  <label htmlFor="">Normal</label>
+                  <label>Normal</label>
                   <input
                     type="radio"
                     value="Low"
                     name="priority"
-                    defaultChecked
+                    checked={priority === "Low"}
+                    onChange={(e) => setPriority(e.target.value)}
                   />
                 </div>
                 <div className="create-radio-item">
-                  <label htmlFor="">Necessary</label>
-                  <input type="radio" value="Middle" name="priority" />
+                  <label>Necessary</label>
+                  <input
+                    type="radio"
+                    value="Middle"
+                    name="priority"
+                    checked={priority === "Middle"}
+                    onChange={(e) => setPriority(e.target.value)}
+                  />
                 </div>
                 <div className="create-radio-item">
-                  <label htmlFor="">Urgent</label>
-                  <input type="radio" value="High" name="priority" />
+                  <label>Urgent</label>
+                  <input
+                    type="radio"
+                    value="High"
+                    name="priority"
+                    checked={priority === "High"}
+                    onChange={(e) => setPriority(e.target.value)}
+                  />
                 </div>
               </div>
             </div>
-            <button className="btn">Add Task</button>
+            <button type="submit" className="btn">
+              Add Task
+            </button>
           </form>
         </div>
       )}

@@ -1,25 +1,22 @@
-import { MdCheck, MdEdit } from "react-icons/md";
+// Task.tsx
 import "./Task.scss";
 
-const Task = () => {
+interface TaskProps {
+  title: string;
+  description: string;
+  deadline: string;
+  category: string;
+  priority: string;
+}
+
+const Task = ({ title, description, deadline, category, priority }: TaskProps) => {
   return (
     <div className="task">
-      <div className="task-card">
-        <div className="top">
-          <h3>Clean the house</h3>
-        </div>
-        <div className="bottom">
-          <span>12. marts 2025</span>
-        </div>
-      </div>
-      <div className="task-action">
-        <span>
-          <MdCheck />
-        </span>
-        <span>
-          <MdEdit />
-        </span>
-      </div>
+      <h4>{title}</h4>
+      <p>{description}</p>
+      <p>Deadline: {deadline}</p>
+      <p>Category: {category}</p>
+      <p>Priority: {priority}</p>
     </div>
   );
 };
