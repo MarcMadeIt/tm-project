@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const FirstVisit = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(true);
 
   useEffect(() => {
     // Tjek om brugeren har besøgt siden før
@@ -21,11 +21,12 @@ const FirstVisit = () => {
   return (
     <>
       {isModalVisible && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>Velkommen!</h2>
-            <p>Dette er din første gang her.</p>
-            <button onClick={handleCloseModal}>Luk</button>
+        <div className="firstvisit-modal">
+          <div className="firstvisit-content">
+            <h2>Welcome</h2>
+            <p></p>
+            <input type="text" placeholder="Type your name?" />
+            <button onClick={handleCloseModal}>Create User</button>
           </div>
         </div>
       )}
