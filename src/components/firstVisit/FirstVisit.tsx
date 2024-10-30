@@ -3,6 +3,7 @@ import "./FirstVisit.scss";
 
 const FirstVisit = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [userName, setUserName] = useState(""); // State to store the user's name
 
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisited");
@@ -14,7 +15,14 @@ const FirstVisit = () => {
   }, []);
 
   const handleCloseModal = () => {
+    if (userName) {
+      localStorage.setItem("userName", userName); // Save the user's name to localStorage
+    }
     setIsModalVisible(false);
+  };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserName(event.target.value); // Update the user's name as they type
   };
 
   return (
@@ -28,7 +36,13 @@ const FirstVisit = () => {
               you’re ready to start.
             </p>
 
-            <input className="inp" type="text" placeholder="Type your name?" />
+            <input
+              className="inp"
+              type="text"
+              placeholder="Type your name"
+              value={userName} // Bind the input value to the state
+              onChange={handleInputChange} // Update state on input change
+            />
             <button className="btn" onClick={handleCloseModal}>
               Create User
             </button>
