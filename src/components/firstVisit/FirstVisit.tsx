@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./FirstVisit.scss";
 
 const FirstVisit = () => {
-  const [isModalVisible, setIsModalVisible] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisited");
