@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   MdDone,
   MdEdit,
@@ -10,6 +10,7 @@ import {
 import "./Task.scss";
 
 interface TaskProps {
+  id: string; // Ensure this is included
   title: string;
   desc: string;
   date: string;
@@ -18,8 +19,11 @@ interface TaskProps {
   priority: string;
 }
 
-const Task = ({ title, desc, date, time, category, priority }: TaskProps) => {
-  const [done, setDone] = useState(false); // State to track if task is done
+const Task = ({ id, title, desc, date, time, category, priority }: TaskProps) => {
+  const [done, setDone] = useState(() => {
+    const storedTask = JSON.parse(localStorage.getItem(`task-${id}`) || "{}");
+    return storedTask.completed || false;
+  });
 
   const isoDateTime = new Date(`${date}T${time}`).toISOString();
   const formattedDate = new Date(date).toLocaleDateString("da-DK", {
@@ -29,9 +33,21 @@ const Task = ({ title, desc, date, time, category, priority }: TaskProps) => {
   });
 
   const handleDoneClick = () => {
-    setDone((prevDone) => !prevDone); // Toggle the done state
-    console.log("Task marked as done:", !done); // Debug log to check if the function is called and state toggles
+    const newDone = !done;
+    setDone(newDone);
+
+    const storedTask = JSON.parse(localStorage.getItem(`task-${id}`) || "{}");
+    const updatedTask = { ...storedTask, completed: newDone };
+    localStorage.setItem(`task-${id}`, JSON.stringify(updatedTask));
   };
+
+  useEffect(() => {
+    const storedTask = localStorage.getItem(`task-${id}`);
+    if (!storedTask) {
+      const initialTask = { title, desc, date, time, category, priority, completed: done };
+      localStorage.setItem(`task-${id}`, JSON.stringify(initialTask));
+    }
+  }, [id, title, desc, date, time, category, priority, done]);
 
   return (
     <div className={`task ${done ? "done" : ""}`}>

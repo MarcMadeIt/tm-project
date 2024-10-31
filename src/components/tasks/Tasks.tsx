@@ -10,15 +10,17 @@ const Tasks = () => {
       {tasks.length > 0 ? (
         [...tasks]
           .reverse()
-          .map((task, index) => (
+          .map((task) => (
             <Task
-              key={index}
+              key={task.id} // Use the unique id as the key
+              id={task.id}   // Pass the id prop to Task component
               title={task.title}
               desc={task.desc}
               date={task.date}
               time={task.time}
               category={task.category}
               priority={task.priority}
+              
             />
           ))
       ) : (

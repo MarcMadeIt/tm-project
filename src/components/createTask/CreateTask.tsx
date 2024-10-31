@@ -1,4 +1,5 @@
 import { useState, FormEvent } from "react";
+import { v4 as uuidv4 } from "uuid"; // Import uuid
 import { MdClose } from "react-icons/md";
 import { useTasks } from "../../context/TasksContext";
 import "./CreateTask.scss";
@@ -28,13 +29,24 @@ const CreateTask = () => {
   const handleAddTask = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const newTask = { title, desc, date, time, category, priority };
+    // Create a new task with a unique ID
+    const newTask = {
+      id: uuidv4(), // Generate a unique ID
+      title,
+      desc,
+      date,
+      time,
+      category,
+      priority,
+      completed: false,
+    };
+    
     addTask(newTask);
 
     setTitle("");
     setDesc("");
-    setDate(formattedDate); // Reset to current date
-    setTime(formattedTime); // Reset to current time
+    setDate(formattedDate);
+    setTime(formattedTime);
     setCategory("");
     setPriority("Normal");
     setOpen(false);
