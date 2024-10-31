@@ -1,4 +1,3 @@
-// CreateTask.tsx
 import { useState, FormEvent } from "react";
 import { MdClose } from "react-icons/md";
 import { useTasks } from "../../context/TasksContext";
@@ -8,15 +7,13 @@ const CreateTask = () => {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-
-  // Get current date and time
   const currentDate = new Date();
-  const formattedDate = currentDate.toISOString().split("T")[0]; // YYYY-MM-DD
+  const formattedDate = currentDate.toISOString().split("T")[0];
   const formattedTime = currentDate
     .toTimeString()
     .split(":")
     .slice(0, 2)
-    .join(":"); // HH:MM
+    .join(":");
 
   const [date, setDate] = useState(formattedDate);
   const [time, setTime] = useState(formattedTime);

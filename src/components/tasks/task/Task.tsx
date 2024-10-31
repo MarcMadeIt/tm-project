@@ -1,4 +1,11 @@
-import { MdDone, MdEdit, MdOutlineAccessTime } from "react-icons/md";
+import {
+  MdDone,
+  MdEdit,
+  MdHealthAndSafety,
+  MdHome,
+  MdOutlineAccessTime,
+  MdOutlineFamilyRestroom,
+} from "react-icons/md";
 import "./Task.scss";
 
 interface TaskProps {
@@ -22,19 +29,27 @@ const Task = ({ title, desc, date, time, category, priority }: TaskProps) => {
   return (
     <div className="task">
       <div className="task-card">
-        <div className="task-left">
-          <h3>{title}</h3>
-          <p>{desc}</p>
-        </div>
-        <div className="task-right">
+        <div className="task-top">
           <p className="deadline">
             <MdOutlineAccessTime />
             <time dateTime={isoDateTime}>
               {formattedDate} kl. {time}
             </time>
           </p>
-          <p>{category}</p>
-          <p>{priority}</p>
+          <p>
+            {priority === "Normal" && "🟢 Normal"}
+            {priority === "Necessary" && "🟠 Necessary"}
+            {priority === "Urgent" && "🔴 Urgent"}
+          </p>
+        </div>
+        <div className="task-bottom">
+          <p className="task-cat">
+            {category === "Home" && <MdHome />}
+            {category === "Family" && <MdOutlineFamilyRestroom />}
+            {category === "Health" && <MdHealthAndSafety />}
+          </p>
+          <h3>{title}</h3>
+          <p>{desc}</p>
         </div>
       </div>
       <div className="task-action">
