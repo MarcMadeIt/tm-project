@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   MdDone,
   MdEdit,
@@ -18,16 +19,22 @@ interface TaskProps {
 }
 
 const Task = ({ title, desc, date, time, category, priority }: TaskProps) => {
-  const isoDateTime = new Date(`${date}T${time}`).toISOString();
+  const [done, setDone] = useState(false); // State to track if task is done
 
+  const isoDateTime = new Date(`${date}T${time}`).toISOString();
   const formattedDate = new Date(date).toLocaleDateString("da-DK", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
   });
 
+  const handleDoneClick = () => {
+    setDone((prevDone) => !prevDone); // Toggle the done state
+    console.log("Task marked as done:", !done); // Debug log to check if the function is called and state toggles
+  };
+
   return (
-    <div className="task">
+    <div className={`task ${done ? "done" : ""}`}>
       <div className="task-card">
         <div className="task-top">
           <p className="deadline">
@@ -53,7 +60,7 @@ const Task = ({ title, desc, date, time, category, priority }: TaskProps) => {
         </div>
       </div>
       <div className="task-action">
-        <span>
+        <span onClick={handleDoneClick}>
           <MdDone />
         </span>
         <span>

@@ -10,7 +10,6 @@
     color: var(--text-color);
     z-index: 1;
 
-
     .task-card {
         background-color: var(--foreground-color);
         color: var(--text-color);
@@ -100,6 +99,8 @@
         }
     }
 
-
-    
 }
+
+.task.done{
+    display: none;
+  }
