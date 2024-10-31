@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 interface Task {
+  id: string;
   title: string;
   desc: string;
   date: string;

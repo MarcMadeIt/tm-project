@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import "./CompletedTask.scss";
 import {
-  MdDone,
-  MdEdit,
   MdHealthAndSafety,
   MdHome,
   MdOutlineAccessTime,
   MdOutlineFamilyRestroom,
+  MdRestore,
 } from "react-icons/md";
-import "./Task.scss";
 
 interface TaskProps {
   id: string;
@@ -16,17 +15,15 @@ interface TaskProps {
   date: string;
   time: string;
   category: string;
-  priority: string;
 }
 
-const Task = ({
+const CompletedTask = ({
   id,
   title,
   desc,
   date,
   time,
   category,
-  priority,
 }: TaskProps) => {
   const [done, setDone] = useState(() => {
     const storedTask = JSON.parse(localStorage.getItem(`task-${id}`) || "{}");
@@ -40,7 +37,7 @@ const Task = ({
     year: "numeric",
   });
 
-  const handleDoneClick = () => {
+  const handleRestoreClick = () => {
     const newDone = !done;
     setDone(newDone);
 
@@ -58,31 +55,25 @@ const Task = ({
         date,
         time,
         category,
-        priority,
         completed: done,
       };
       localStorage.setItem(`task-${id}`, JSON.stringify(initialTask));
     }
-  }, [id, title, desc, date, time, category, priority, done]);
+  }, [id, title, desc, date, time, category, done]);
 
   return (
-    <div className={`task ${done ? "done" : ""}`}>
-      <div className="task-card">
-        <div className="task-top">
+    <div className="completed-task">
+      <div className="completed-task-card">
+        <div className="completed-task-top">
           <p className="deadline">
             <MdOutlineAccessTime />
             <time dateTime={isoDateTime}>
               {formattedDate} kl. {time}
             </time>
           </p>
-          <p>
-            {priority === "Normal" && "🟢 Normal"}
-            {priority === "Necessary" && "🟠 Necessary"}
-            {priority === "Urgent" && "🔴 Urgent"}
-          </p>
         </div>
-        <div className="task-bottom">
-          <p className="task-cat">
+        <div className="completed-task-bottom">
+          <p className="completed-task-cat">
             {category === "Home" && <MdHome />}
             {category === "Family" && <MdOutlineFamilyRestroom />}
             {category === "Health" && <MdHealthAndSafety />}
@@ -90,17 +81,21 @@ const Task = ({
           <h3>{title}</h3>
           <p>{desc}</p>
         </div>
-      </div>
-      <div className="task-action">
-        <span onClick={handleDoneClick}>
-          <MdDone />
-        </span>
-        <span>
-          <MdEdit />
+
+        <span onClick={handleRestoreClick}>
+          <MdRestore />
         </span>
       </div>
+      {/* <div className="completed-task-action">
+          <span>
+            <MdRestore />
+          </span>
+          <span>
+            <MdEdit />
+          </span>
+        </div> */}
     </div>
   );
 };
 
-export default Task;
+export default CompletedTask;
