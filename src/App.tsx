@@ -20,7 +20,7 @@ function App() {
       </header>
       <main>
         {view === "tasks" && <Tasks />}
-        {view === "previous" && <CompletedTasks />}
+        {view === "completed" && <CompletedTasks />}
       </main>
       <section>
         <CreateTask />

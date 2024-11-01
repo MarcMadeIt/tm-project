@@ -50,11 +50,17 @@ const CompletedTask = ({
   };
 
   useEffect(() => {
-    const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
-    if (!tasks.some((task: { id: string }) => task.id === id)) {
-      const newTask = { id, title, desc, date, time, category, completed: done };
-      tasks.push(newTask);
-      localStorage.setItem("tasks", JSON.stringify(tasks));
+    const storedTask = localStorage.getItem(`task-${id}`);
+    if (!storedTask) {
+      const initialTask = {
+        title,
+        desc,
+        date,
+        time,
+        category,
+        completed: true,
+      };
+      localStorage.setItem(`task-${id}`, JSON.stringify(initialTask));
     }
   }, [id, title, desc, date, time, category, done]);
 
