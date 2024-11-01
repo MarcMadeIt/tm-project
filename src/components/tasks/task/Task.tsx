@@ -28,7 +28,6 @@ const Task = ({
   time,
   category,
   priority,
-  completed,
 }: TaskProps) => {
   const { toggleTaskCompletion } = useTasks();
 
@@ -40,7 +39,7 @@ const Task = ({
   });
 
   return (
-    <div className={`task ${completed ? "done" : ""}`}>
+    <div className="task">
       <div className="task-card">
         <div className="task-top">
           <p className="deadline">

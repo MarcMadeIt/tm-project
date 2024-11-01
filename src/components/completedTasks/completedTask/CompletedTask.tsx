@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import "./CompletedTask.scss";
 import {
   MdHealthAndSafety,
   MdHome,
@@ -7,6 +5,8 @@ import {
   MdOutlineFamilyRestroom,
   MdRestore,
 } from "react-icons/md";
+import "./CompletedTask.scss";
+import { useTasks } from "../../../context/TasksContext"; // Assuming a context is in place for task management
 
 interface TaskProps {
   id: string;
@@ -27,6 +27,8 @@ const CompletedTask = ({
   category,
   completed,
 }: TaskProps) => {
+  const { toggleTaskCompletion } = useTasks(); // Use context to handle completion status
+
   const isoDateTime = new Date(`${date}T${time}`).toISOString();
   const formattedDate = new Date(date).toLocaleDateString("da-DK", {
     day: "2-digit",
@@ -35,33 +37,11 @@ const CompletedTask = ({
   });
 
   const handleRestoreClick = () => {
-    const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
-    const taskIndex = tasks.findIndex((task: { id: string }) => task.id === id);
-
-    if (taskIndex !== -1) {
-      tasks[taskIndex].completed = !tasks[taskIndex].completed;
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-    } else {
-      console.log("Task not found"); // Debug log
-    }
+    toggleTaskCompletion(id);
   };
 
-  useEffect(() => {
-    const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
-    const taskExists = tasks.some((task: { id: string }) => task.id === id);
-
-    if (!taskExists) {
-      const newTask = { id, title, desc, date, time, category, completed };
-      tasks.push(newTask);
-      console.log("Adding new task to localStorage:", newTask); // Debug log
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-    } else {
-      console.log("Task already exists in localStorage"); // Debug log
-    }
-  }, [id, title, desc, date, time, category, completed]);
-
   return (
-    <div className={`completed-task ${completed ? "completed" : ""}`}>
+    <div className="completed-task">
       <div className="completed-task-card">
         <div className="completed-task-top">
           <p className="deadline">
