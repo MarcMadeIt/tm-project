@@ -66,11 +66,7 @@ footer {
 span, p {
   color: var(--text-color);
 
-  @include responsive.tablet {
-    font-size: 18px;
-    letter-spacing: .4px;
-    font-weight: 600;
-  }
+  
 }
 
 .app {
