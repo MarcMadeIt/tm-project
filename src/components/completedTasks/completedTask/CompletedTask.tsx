@@ -15,7 +15,6 @@ interface TaskProps {
   date: string;
   time: string;
   category: string;
-  completed: boolean;
 }
 
 const CompletedTask = ({
@@ -25,7 +24,6 @@ const CompletedTask = ({
   date,
   time,
   category,
-  completed,
 }: TaskProps) => {
   const [done, setDone] = useState(() => {
     const storedTask = JSON.parse(localStorage.getItem(`task-${id}`) || "{}");
