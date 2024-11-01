@@ -7,21 +7,25 @@ const Tasks = () => {
 
   return (
     <div className="tasks">
-      {tasks.length > 0 ? (
-        [...tasks].reverse().map((task, index) => (
-          <Task
-            key={`${task.id}-${index}`} // Use the unique id as the key
-            id={task.id} // Pass the id prop to Task component
-            title={task.title}
-            desc={task.desc}
-            date={task.date}
-            time={task.time}
-            category={task.category}
-            priority={task.priority}
-          />
-        ))
+      {tasks.filter((task) => !task.completed).length > 0 ? (
+        tasks
+          .filter((task) => !task.completed)
+          .reverse()
+          .map((task, index) => (
+            <Task
+              key={`${task.id}-${index}`}
+              id={task.id}
+              title={task.title}
+              desc={task.desc}
+              date={task.date}
+              time={task.time}
+              category={task.category}
+              priority={task.priority}
+              completed={task.completed}
+            />
+          ))
       ) : (
-        <p>No tasks found.</p>
+        <p>No general tasks found.</p>
       )}
     </div>
   );

@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import {
   MdDone,
   MdEdit,
@@ -8,6 +7,7 @@ import {
   MdOutlineFamilyRestroom,
 } from "react-icons/md";
 import "./Task.scss";
+import { useTasks } from "../../../context/TasksContext";
 
 interface TaskProps {
   id: string;
@@ -17,6 +17,7 @@ interface TaskProps {
   time: string;
   category: string;
   priority: string;
+  completed: boolean;
 }
 
 const Task = ({
@@ -27,11 +28,9 @@ const Task = ({
   time,
   category,
   priority,
+  completed,
 }: TaskProps) => {
-  const [done, setDone] = useState(() => {
-    const storedTask = JSON.parse(localStorage.getItem(`task-${id}`) || "{}");
-    return storedTask.completed || false;
-  });
+  const { toggleTaskCompletion } = useTasks();
 
   const isoDateTime = new Date(`${date}T${time}`).toISOString();
   const formattedDate = new Date(date).toLocaleDateString("da-DK", {
@@ -40,33 +39,8 @@ const Task = ({
     year: "numeric",
   });
 
-  const handleDoneClick = () => {
-    const newDone = !done;
-    setDone(newDone);
-
-    const storedTask = JSON.parse(localStorage.getItem(`task-${id}`) || "{}");
-    const updatedTask = { ...storedTask, completed: newDone };
-    localStorage.setItem(`task-${id}`, JSON.stringify(updatedTask));
-  };
-
-  useEffect(() => {
-    const storedTask = localStorage.getItem(`task-${id}`);
-    if (!storedTask) {
-      const initialTask = {
-        title,
-        desc,
-        date,
-        time,
-        category,
-        priority,
-        completed: done,
-      };
-      localStorage.setItem(`task-${id}`, JSON.stringify(initialTask));
-    }
-  }, [id, title, desc, date, time, category, priority, done]);
-
   return (
-    <div className={`task ${done ? "done" : ""}`}>
+    <div className={`task ${completed ? "done" : ""}`}>
       <div className="task-card">
         <div className="task-top">
           <p className="deadline">
@@ -92,7 +66,7 @@ const Task = ({
         </div>
       </div>
       <div className="task-action">
-        <span onClick={handleDoneClick}>
+        <span onClick={() => toggleTaskCompletion(id)}>
           <MdDone />
         </span>
         <span>
