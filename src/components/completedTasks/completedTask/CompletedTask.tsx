@@ -26,8 +26,9 @@ const CompletedTask = ({
   category,
 }: TaskProps) => {
   const [done, setDone] = useState(() => {
-    const storedTask = JSON.parse(localStorage.getItem(`task-${id}`) || "{}");
-    return storedTask.completed || false;
+    const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+    const task = tasks.find((task: { id: string }) => task.id === id);
+    return task ? task.completed : false;
   });
 
   const isoDateTime = new Date(`${date}T${time}`).toISOString();
@@ -38,31 +39,27 @@ const CompletedTask = ({
   });
 
   const handleRestoreClick = () => {
-    const newDone = !done;
-    setDone(newDone);
+    const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+    const taskIndex = tasks.findIndex((task: { id: string }) => task.id === id);
 
-    const storedTask = JSON.parse(localStorage.getItem(`task-${id}`) || "{}");
-    const updatedTask = { ...storedTask, completed: newDone };
-    localStorage.setItem(`task-${id}`, JSON.stringify(updatedTask));
+    if (taskIndex !== -1) {
+      tasks[taskIndex].completed = !tasks[taskIndex].completed;
+      setDone(tasks[taskIndex].completed);
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
   };
 
   useEffect(() => {
-    const storedTask = localStorage.getItem(`task-${id}`);
-    if (!storedTask) {
-      const initialTask = {
-        title,
-        desc,
-        date,
-        time,
-        category,
-        completed: done,
-      };
-      localStorage.setItem(`task-${id}`, JSON.stringify(initialTask));
+    const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+    if (!tasks.some((task: { id: string }) => task.id === id)) {
+      const newTask = { id, title, desc, date, time, category, completed: done };
+      tasks.push(newTask);
+      localStorage.setItem("tasks", JSON.stringify(tasks));
     }
   }, [id, title, desc, date, time, category, done]);
 
   return (
-    <div className="completed-task">
+    <div className={`completed-task ${done ? "completed" : ""}`}>
       <div className="completed-task-card">
         <div className="completed-task-top">
           <p className="deadline">
@@ -86,14 +83,6 @@ const CompletedTask = ({
           <MdRestore />
         </span>
       </div>
-      {/* <div className="completed-task-action">
-          <span>
-            <MdRestore />
-          </span>
-          <span>
-            <MdEdit />
-          </span>
-        </div> */}
     </div>
   );
 };
