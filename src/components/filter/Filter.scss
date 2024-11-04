@@ -21,6 +21,12 @@
         .priority{
             display: flex;
             gap: 15px;
+
+            button {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
         }
         .category{
             display: flex;
@@ -28,6 +34,7 @@
 
             button {
                 display: flex;
+                align-items: center;
                 gap: 5px;
             }
         }
