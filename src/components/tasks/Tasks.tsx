@@ -3,12 +3,13 @@ import Task from "./task/Task";
 import "./Tasks.scss";
 
 const Tasks = () => {
-  const { tasks } = useTasks();
+  const { filterTasks } = useTasks();
+  const filteredTasks = filterTasks();
 
   return (
     <div className="tasks">
-      {tasks.filter((task) => !task.completed).length > 0 ? (
-        tasks
+      {filteredTasks.filter((task) => !task.completed).length > 0 ? (
+        filteredTasks
           .filter((task) => !task.completed)
           .reverse()
           .map((task, index) => (
