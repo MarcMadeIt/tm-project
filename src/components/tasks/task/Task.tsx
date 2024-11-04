@@ -55,13 +55,15 @@ const Task = ({
           </p>
         </div>
         <div className="task-bottom">
-          <p className="task-cat">
+          <div className="task-content">
+            <h3>{title}</h3>
+            <p>{desc}</p>
+          </div>
+          <span className="task-cat">
             {category === "Home" && <MdHome />}
             {category === "Family" && <MdOutlineFamilyRestroom />}
             {category === "Health" && <MdHealthAndSafety />}
-          </p>
-          <h3>{title}</h3>
-          <p>{desc}</p>
+          </span>
         </div>
       </div>
       <div className="task-action">

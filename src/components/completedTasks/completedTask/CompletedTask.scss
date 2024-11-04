@@ -1,34 +1,69 @@
 @use '../../../responsive.scss';
 
 .completed-task {
-    width: 300px;
+    width: 100%;
     height: 150px;
     display: flex;
     justify-content: center;
-    flex-direction: row;
     gap: 10px;
     color: var(--text-color);
-    z-index: 1;
+
+    @include responsive.large-mobile {
+        width: 215px;
+    }
 
 
-    .completed-task-card {
+    .completed-card {
         background-color: var(--foreground-color);
         color: var(--text-color);
-        padding: 50px 30px 30px 30px;
-        flex: 3;
+        padding: 15px;
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: space-between;
+        gap: 15px;
+        border-radius: var(--br-container);
+        position: relative;
+        opacity: 80%;
+        transition: all 300ms;
+        overflow: hidden;
+        width: 100%;
 
 
-        .completed-task-top {
-            display: flex;
-            flex-direction: row;
-            gap: 15px;
-            position: absolute;
-            top: 10px;
-            font-size: 13px;
+        .right-line, .left-line {
+            display: none;
+        }
+
+        @include responsive.large-mobile {
+            
+            .right-line, .left-line {
+                display: block;
+                width: 250px;
+                position: absolute;
+                top: 50%;  
+                left: 50%; 
+                transform: translate(-50%, -50%) rotate(40deg); 
+                height: 0;
+                border: 2px solid var(--background-color);
+                opacity: 70%;
+                z-index: -1;
+            }
+            
+            .right-line {
+                transform: translate(-50%, -50%) rotate(37deg); 
+            }
+            
+            .left-line {
+                transform: translate(-50%, -50%) rotate(-37deg); 
+            }
+        }
+            
+            .completed-top {
+                display: flex;
+                justify-content: space-between;
+                flex: 1;
+                gap: 15px;
+                font-size: 13px;
+                
 
 
             .deadline {
@@ -41,57 +76,65 @@
                 gap: 5px;
             }
 
+            .restore-btn {
+                cursor: pointer;
+                background-color: var(--background-color);
+                border-radius: var(--br);
+            }
+
             
         }
 
-        .completed-task-bottom {
+        .completed-bottom {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            position: relative;
-            width: 100%;
+            width: 80%;
             height: 100%;
+            flex: 3;
+            text-decoration: line-through var(--action) 2px;
 
             h3 {
                 font-size: 17px;
 
-                @include responsive.tablet {
-                    font-size: 23px;
-                }
+                
             }
 
-            .completed-task-cat {
+            .completed-cat {
                 position: absolute;
-                left: 0;
-                top: 0;
-                bottom: 0;
-                font-size: 80px;
-                color: var(--background-color);
+                right: 5px;
+                bottom: 5px;
+                font-size: 60px;
+                color: var(--foreground-shadow);
             }
         }
     }
-    
 
-    .completed-task-action {
+    .confirm {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--foreground-color);
         display: flex;
+        align-items: center;
         justify-content: center;
+        z-index: 50;
+      }
+      
+      .confirm-content {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
         align-items: center;
         gap: 15px;
-        flex: 1;
+      }
 
-        span {
-            cursor: pointer;
-            font-size: 23px;
-            color: var(--text-color);
-            background-color: var(--foreground-color);
-            padding: 5px;
-            border-radius: var(--br);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    }
+      .confirm-btn {
+        display: flex;
+        gap: 15px;
+      }
+      
 
-
-    
 }

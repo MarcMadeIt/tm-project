@@ -11,7 +11,6 @@
     
 
     @include responsive.tablet {
-        padding: 50px;
     }
 }
 
@@ -37,12 +36,11 @@
             }
 
             .task-top {
-                left: 10px;
+                left: 20px;
             }
 
             .task-bottom {
-                justify-content: flex-end;
-                align-items: end;
+                flex-direction: row-reverse;
             }
         }
 
@@ -62,17 +60,12 @@
             }
 
             .task-top {
-                right: 10px;
+                right: 20px;
                 flex-direction: row-reverse;
             }
 
-            .task-bottom {
-                justify-content: flex-start;
-
-                .task-cat {
-                    left: auto;
-                    right: 0;
-                }
+            .task-cat {
+                justify-content: end;
             }
         }
     }

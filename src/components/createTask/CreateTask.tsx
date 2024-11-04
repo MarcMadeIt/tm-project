@@ -1,5 +1,5 @@
 import { useState, FormEvent } from "react";
-import { v4 as uuidv4 } from "uuid"; // Import uuid
+import { v4 as uuidv4 } from "uuid";
 import { MdClose } from "react-icons/md";
 import { useTasks } from "../../context/TasksContext";
 import "./CreateTask.scss";
@@ -20,6 +20,9 @@ const CreateTask = () => {
   const [time, setTime] = useState(formattedTime);
   const [category, setCategory] = useState("");
   const [priority, setPriority] = useState("Normal");
+  const [charCount, setCharCount] = useState(0);
+  const maxCharsTitle = 25;
+  const maxCharsDesc = 80;
 
   const { addTask } = useTasks();
 
@@ -29,9 +32,8 @@ const CreateTask = () => {
   const handleAddTask = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Create a new task with a unique ID
     const newTask = {
-      id: uuidv4(), // Generate a unique ID
+      id: uuidv4(),
       title,
       desc,
       date,
@@ -40,7 +42,7 @@ const CreateTask = () => {
       priority,
       completed: false,
     };
-    
+
     addTask(newTask);
 
     setTitle("");
@@ -75,9 +77,19 @@ const CreateTask = () => {
                 className="inp"
                 placeholder="e.g., Clean the house"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => {
+                  const newTitle = e.target.value;
+                  if (newTitle.length <= maxCharsTitle) {
+                    setTitle(newTitle);
+                    setCharCount(newTitle.length);
+                  }
+                }}
                 required
+                maxLength={maxCharsTitle}
               />
+              <div className="indicator">
+                {charCount}/{maxCharsTitle}
+              </div>
             </div>
             <div className="create-item">
               <label htmlFor="desc">Description</label>
@@ -87,8 +99,18 @@ const CreateTask = () => {
                 className="inp"
                 placeholder="e.g., Clean the hall and toilet"
                 value={desc}
-                onChange={(e) => setDesc(e.target.value)}
+                onChange={(e) => {
+                  const newTitle = e.target.value;
+                  if (newTitle.length <= maxCharsTitle) {
+                    setTitle(newTitle);
+                    setCharCount(newTitle.length);
+                  }
+                }}
+                maxLength={maxCharsDesc}
               />
+              <div className="indicator">
+                {charCount}/{maxCharsDesc}
+              </div>
             </div>
             <div className="create-item">
               <label htmlFor="deadline">Deadline</label>

@@ -1,5 +1,6 @@
 import { useTasks } from "../../context/TasksContext";
 import CompletedTask from "./completedTask/CompletedTask";
+import "./CompletedTasks.scss";
 
 const CompletedTasks = () => {
   const { tasks } = useTasks();

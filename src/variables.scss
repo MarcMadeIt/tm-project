@@ -1,6 +1,7 @@
 :root {
     --background-color: #FAF7F5;
     --foreground-color: #e7e2df;
+    --foreground-shadow: #f4efed;
     --text-color: #171717;
     --text-grey: #adadad;
     --action: #A235D9;
@@ -16,6 +17,7 @@
   [data-theme="dark"] {
     --background-color: #171717;
     --foreground-color: #232323;
+    --foreground-shadow: #1d1d1d;
     --text-color: #FAF7F5;
     --text-grey: #757575;
     --action: #A235D9;

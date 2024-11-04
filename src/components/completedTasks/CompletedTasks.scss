@@ -5,98 +5,22 @@
 .completed-tasks {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-direction: column;
     gap: 25px;
-
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
     
+    @include responsive.large-mobile {
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
 
     @include responsive.tablet {
         padding: 50px;
     }
 }
 
-.completed-task {
-    width: 100%;
-    display: flex;
-    opacity: 0;
-    animation-duration: 1.5s; 
-    animation-fill-mode: forwards; 
-    animation-timing-function: ease-out; 
 
-    &:nth-child(even) {
-        flex-direction: row;
-        animation-name: slideInFromLeft;
-        padding: 0 15px 0 0;
-
-        .completed-task-card {
-            border-radius: var(--border-radius-sp-left);
-            flex-direction: row-reverse;
-
-            @include responsive.tablet  {
-                border-radius: var(--br-container);
-            }
-
-            .completed-task-top {
-                left: 10px;
-            }
-
-            .completed-task-bottom {
-                justify-content: flex-end;
-                align-items: end;
-            }
-        }
-
-
-    }
-
-    &:nth-child(odd) {
-        flex-direction: row-reverse;
-        animation-name: slideInFromRight;
-        padding: 0 0 0 15px;
-
-        .completed-task-card {
-            border-radius: var(--border-radius-sp-right);
-            
-            @include responsive.tablet  {
-                border-radius: var(--br-container);
-            }
-
-            .completed-task-top {
-                right: 10px;
-                flex-direction: row-reverse;
-            }
-
-            .completed-task-bottom {
-                justify-content: flex-start;
-
-                .completed-task-cat {
-                    left: auto;
-                    right: 0;
-                }
-            }
-        }
-    }
-}
-
-@keyframes slideInFromLeft {
-    0% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInFromRight {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}

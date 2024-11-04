@@ -54,11 +54,19 @@
                 flex-direction: column;
                 gap: 5px;
                 width: 100%;
+                position: relative;
 
                 .deadline {
                     display: flex;
                     gap: 30px;
 
+                }
+
+                .indicator {
+                    position: absolute;
+                    right: 5px;
+                    bottom: -20px;
+                    color: var(--text-grey);
                 }
 
                 .create-radio-content {
