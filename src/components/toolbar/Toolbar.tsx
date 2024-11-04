@@ -1,5 +1,6 @@
 import "./Toolbar.scss";
 import Filter from "../filter/Filter";
+import { useTasks } from "../../context/TasksContext";
 
 interface Props {
   setView: (view: string) => void;
@@ -7,6 +8,8 @@ interface Props {
 }
 
 const Toolbar = ({ setView, view }: Props) => {
+  const { setFilter } = useTasks();
+
   return (
     <div className="toolbar">
       <div className="left">
@@ -24,7 +27,7 @@ const Toolbar = ({ setView, view }: Props) => {
         </button>
       </div>
       <div className="right">
-        <Filter />
+        <Filter setFilter={setFilter} />
       </div>
     </div>
   );

@@ -51,7 +51,7 @@ const FirstVisit = () => {
               placeholder="Type your name"
               value={userName}
               onChange={handleInputChange}
-              maxLength={20}
+              maxLength={10}
               required
             />
             <button type="submit" className="btn" onClick={handleCloseModal}>
