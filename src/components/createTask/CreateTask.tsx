@@ -20,7 +20,8 @@ const CreateTask = () => {
   const [time, setTime] = useState(formattedTime);
   const [category, setCategory] = useState("");
   const [priority, setPriority] = useState("Normal");
-  const [charCount, setCharCount] = useState(0);
+  const [titleCharCount, setTitleCharCount] = useState(0);
+  const [descCharCount, setDescCharCount] = useState(0);
   const maxCharsTitle = 25;
   const maxCharsDesc = 80;
 
@@ -51,6 +52,8 @@ const CreateTask = () => {
     setTime(formattedTime);
     setCategory("");
     setPriority("Normal");
+    setTitleCharCount(0);
+    setDescCharCount(0);
     setOpen(false);
   };
 
@@ -81,14 +84,14 @@ const CreateTask = () => {
                   const newTitle = e.target.value;
                   if (newTitle.length <= maxCharsTitle) {
                     setTitle(newTitle);
-                    setCharCount(newTitle.length);
+                    setTitleCharCount(newTitle.length);
                   }
                 }}
                 required
                 maxLength={maxCharsTitle}
               />
               <div className="indicator">
-                {charCount}/{maxCharsTitle}
+                {titleCharCount}/{maxCharsTitle}
               </div>
             </div>
             <div className="create-item">
@@ -100,16 +103,16 @@ const CreateTask = () => {
                 placeholder="e.g., Clean the hall and toilet"
                 value={desc}
                 onChange={(e) => {
-                  const newTitle = e.target.value;
-                  if (newTitle.length <= maxCharsTitle) {
-                    setTitle(newTitle);
-                    setCharCount(newTitle.length);
+                  const newDesc = e.target.value;
+                  if (newDesc.length <= maxCharsDesc) {
+                    setDesc(newDesc);
+                    setDescCharCount(newDesc.length);
                   }
                 }}
                 maxLength={maxCharsDesc}
               />
               <div className="indicator">
-                {charCount}/{maxCharsDesc}
+                {descCharCount}/{maxCharsDesc}
               </div>
             </div>
             <div className="create-item">
