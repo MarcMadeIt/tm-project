@@ -21,6 +21,8 @@ interface TasksContextType {
   tasks: Task[];
   addTask: (task: Task) => void;
   toggleTaskCompletion: (id: string) => void;
+  filterTask: () => Task [];
+  setFilter: (filter:string) => void;
 }
 
 const TasksContext = createContext<TasksContextType | undefined>(undefined);
@@ -31,6 +33,8 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
     const savedTasks = localStorage.getItem("tasks");
     return savedTasks ? JSON.parse(savedTasks) : [];
   });
+
+  const [filter, setFilter] = useState <string> ("Latest");
 
   useEffect(() => {
     // Sync tasks to localStorage whenever they change
@@ -49,8 +53,31 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const filterTasks = (filter: string): Task[] => {
+    switch (filter) {
+    case"Latest":
+    return tasks.slice().sort((a, b) =>newDate(b.date).getTime() - newDate(a.date).getTime());
+    case"Upcoming":
+    return tasks.slice().sort((a, b) =>newDate(a.date).getTime() - newDate(b.date).getTime());
+    case"Priority: Urgent":
+    return tasks.filter((task) => task.priority === "Urgent");
+    case"Priority: Necessary":
+    return tasks.filter((task) => task.priority === "Necessary");
+    case"Priority: Normal":
+    return tasks.filter((task) => task.priority === "Normal");
+    case"Category: Home":
+    return tasks.filter((task) => task.category === "Home");
+    case"Category: Family":
+    return tasks.filter((task) => task.category === "Family");
+    case"Category: Health":
+    return tasks.filter((task) => task.category === "Health");
+    default:
+    return tasks;
+        }
+      };
+
   return (
-    <TasksContext.Provider value={{ tasks, addTask, toggleTaskCompletion }}>
+    <TasksContext.Provider value={{ tasks, addTask, toggleTaskCompletion, filterTasks }}>
       {children}
     </TasksContext.Provider>
   );

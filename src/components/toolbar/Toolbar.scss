@@ -1,4 +1,4 @@
-.filter-tasks {
+.toolbar {
     height: 50px;
     display: flex;
     justify-content: space-between;
@@ -23,12 +23,5 @@
 
     .right {
         display: flex;
-        align-items: center;
-        gap: 5px;
-
-        span {
-            font-size: 17px;
-            font-weight: 600;
-        }
     }
 }

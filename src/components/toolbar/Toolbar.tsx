@@ -1,14 +1,14 @@
-import { MdFilterList } from "react-icons/md";
-import "./FilterTasks.scss";
+import "./Toolbar.scss";
+import Filter from "../filter/Filter";
 
 interface Props {
   setView: (view: string) => void;
   view: string;
 }
 
-const FilterTasks = ({ setView, view }: Props) => {
+const Toolbar = ({ setView, view }: Props) => {
   return (
-    <div className="filter-tasks">
+    <div className="toolbar">
       <div className="left">
         <button
           className={`btn-light ${view === "tasks" ? "active" : ""}`}
@@ -24,11 +24,10 @@ const FilterTasks = ({ setView, view }: Props) => {
         </button>
       </div>
       <div className="right">
-        <span>Latest</span>
-        <MdFilterList />
+        <Filter />
       </div>
     </div>
   );
 };
 
-export default FilterTasks;
+export default Toolbar;
