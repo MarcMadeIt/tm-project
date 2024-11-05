@@ -35,15 +35,30 @@
             top: 10px;
             font-size: 13px;
 
+            .task-prio  {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                img {
+
+                    width: 14px;
+                    height: 14px;
+                }
+            }
+
 
             .deadline {
                 background-color: var(--foreground-shadow);
                 color: var(--text-color);
                 border-radius: 4px;
-                padding: 2px 4px;
+                padding: 2px 6px;
                 display: flex;
                 align-items: center;
                 gap: 5px;
+            }
+
+            @include responsive.large-mobile {
+                font-size: 15px;
             }
 
             

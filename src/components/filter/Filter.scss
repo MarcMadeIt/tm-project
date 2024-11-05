@@ -1,54 +1,95 @@
+@use '../../responsive.scss';
+
 .filter {
     position: relative;
     
 
-    .filter-btn {
+    .filter-open {
         display: flex;
         align-items: center;
         gap: 5px;
-        font-size: 17px;
+        font-size: 14px;
         font-weight: 600;
+
+        @include responsive.mini-tablet {
+            font-size: 15px;
+        }
     }
 
     .filter-content{
         display: flex;
         flex-direction: column;
-        align-items: center;
+        gap: 20px;
         padding: 15px;
-        gap: 30px;
         background-color: var(--background-color);
         border: 2px solid var(--foreground-color);
         border-radius: var(--br);
         position: absolute;
-        right: 0;
-        top: 30px;
+        right: 3px;
+        top: 40px;
+
+        @include responsive.large-mobile {
+            right: -15px;
+            
+        }
+
 
         .active {
-            border-bottom: 2px solid var(--action);
+            background-color: var(--action-hover);
+            color: white;
+        }
+
+        h5 {
+            color: var(--text-grey);
         }
 
         .sortby{
             display: flex;
-            gap: 15px;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+
+            .sortby-items {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+            }
+
         }
         .priority{
             display: flex;
-            gap: 15px;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
 
-            button {
+            .priority-items {
                 display: flex;
-                align-items: center;
-                gap: 5px;
+                justify-content: space-between;
+                gap: 15px;
+                
+                button {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
             }
         }
         .category{
             display: flex;
-            gap: 15px;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
 
-            button {
+            .category-items {
                 display: flex;
-                align-items: center;
-                gap: 5px;
+                justify-content: space-between;
+                gap: 15px;
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
             }
         }
     }

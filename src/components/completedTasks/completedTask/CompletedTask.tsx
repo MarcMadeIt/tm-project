@@ -53,8 +53,6 @@ const CompletedTask = ({
   return (
     <div className="completed-task">
       <div className="completed-card">
-        <hr className="right-line" />
-        <hr className="left-line" />
         <div className="completed-top">
           <p className="deadline">
             <MdOutlineAccessTime />
@@ -62,9 +60,10 @@ const CompletedTask = ({
               {formattedDate} kl. {time}
             </time>
           </p>
-          <span className="restore-btn" onClick={handleRestoreClick}>
+          <button className="restore-btn" onClick={handleRestoreClick}>
             <MdRestartAlt size={22} />
-          </span>
+            <span>Restore</span>
+          </button>
         </div>
         <div className="completed-bottom">
           <h3>{title}</h3>

@@ -112,6 +112,19 @@ span, p {
   font-weight: 600;
 }
 
+.btn-filter {
+  background-color: var(--foreground-color);
+  border-radius: var(--br);
+  padding: 7px 12px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+
+  
+}
+
 button {
   color: var(--text-color);
 }

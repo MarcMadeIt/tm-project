@@ -48,10 +48,22 @@ const Task = ({
               {formattedDate} kl. {time}
             </time>
           </p>
-          <p>
-            {priority === "Normal" && "🟢 Normal"}
-            {priority === "Necessary" && "🟠 Necessary"}
-            {priority === "Urgent" && "🔴 Urgent"}
+          <p className="task-prio">
+            {priority === "Normal" && (
+              <>
+                <img src="src/assets/Normal.png" alt="Normal Priority" /> Normal
+              </>
+            )}
+            {priority === "Necessary" && (
+              <>
+                <img src="src/assets/Necessary.png" alt="" /> Necessary
+              </>
+            )}
+            {priority === "Urgent" && (
+              <>
+                <img src="src/assets/Urgent.png" alt="" /> Urgent
+              </>
+            )}
           </p>
         </div>
         <div className="task-bottom">

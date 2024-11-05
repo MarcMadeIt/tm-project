@@ -8,8 +8,8 @@
     gap: 10px;
     color: var(--text-color);
 
-    @include responsive.large-mobile {
-        width: 215px;
+    @include responsive.mini-tablet {
+        width: 300px;
     }
 
 
@@ -29,33 +29,7 @@
         width: 100%;
 
 
-        .right-line, .left-line {
-            display: none;
-        }
-
-        @include responsive.large-mobile {
-            
-            .right-line, .left-line {
-                display: block;
-                width: 250px;
-                position: absolute;
-                top: 50%;  
-                left: 50%; 
-                transform: translate(-50%, -50%) rotate(40deg); 
-                height: 0;
-                border: 2px solid var(--background-color);
-                opacity: 70%;
-                z-index: -1;
-            }
-            
-            .right-line {
-                transform: translate(-50%, -50%) rotate(37deg); 
-            }
-            
-            .left-line {
-                transform: translate(-50%, -50%) rotate(-37deg); 
-            }
-        }
+       
             
             .completed-top {
                 display: flex;
@@ -70,7 +44,7 @@
                 background-color: var(--background-color);
                 color: var(--text-color);
                 border-radius: 4px;
-                padding: 2px 4px;
+                padding: 2px 6px;
                 display: flex;
                 align-items: center;
                 gap: 5px;
@@ -78,8 +52,10 @@
 
             .restore-btn {
                 cursor: pointer;
-                background-color: var(--background-color);
-                border-radius: var(--br);
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                font-size: 15px;
             }
 
             

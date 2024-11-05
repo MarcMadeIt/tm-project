@@ -13,7 +13,7 @@ interface FilterProps {
 
 const Filter = ({ setFilter }: FilterProps) => {
   const [filterOpen, setFilterOpen] = useState(false);
-  const [activeFilter, setActiveFilter] = useState<string>("");
+  const [activeFilter, setActiveFilter] = useState<string>("Upcoming");
 
   const toggleFilter = () => {
     setFilterOpen(!filterOpen);
@@ -21,71 +21,96 @@ const Filter = ({ setFilter }: FilterProps) => {
 
   const handleFilterClick = (filter: string) => {
     setFilter(filter);
-    setActiveFilter(filter); // Sæt det aktive filter
-    setFilterOpen(false); // Luk filtermenuen efter valg
+    setActiveFilter(filter);
+    setFilterOpen(false);
   };
 
   return (
     <div className="filter">
-      <button className="filter-btn" onClick={toggleFilter}>
-        <span>Filter</span>
-        <MdFilterList size={20} />
+      <button className="filter-open " onClick={toggleFilter}>
+        <span>{activeFilter}</span>
+        <MdFilterList size={25} />
       </button>
       {filterOpen && (
         <div className="filter-content">
           <div className="sortby">
-            <button
-              onClick={() => handleFilterClick("Latest")}
-              className={activeFilter === "Latest" ? "active" : ""}
-            >
-              Latest
-            </button>
-            <button
-              onClick={() => handleFilterClick("Upcoming")}
-              className={activeFilter === "Upcoming" ? "active" : ""}
-            >
-              Upcoming
-            </button>
+            <h5>Sort by</h5>
+            <div className="sortby-items">
+              <button
+                onClick={() => handleFilterClick("Latest")}
+                className={`btn-filter  ${
+                  activeFilter === "Latest" ? "active" : ""
+                }`}
+              >
+                Latest
+              </button>
+              <button
+                onClick={() => handleFilterClick("Upcoming")}
+                className={`btn-filter  ${
+                  activeFilter === "Upcoming" ? "active" : ""
+                }`}
+              >
+                Upcoming
+              </button>
+            </div>
           </div>
           <div className="priority">
-            <button
-              onClick={() => handleFilterClick("Priority: Normal")}
-              className={activeFilter === "Priority: Normal" ? "active" : ""}
-            >
-              🟢 Normal
-            </button>
-            <button
-              onClick={() => handleFilterClick("Priority: Necessary")}
-              className={activeFilter === "Priority: Necessary" ? "active" : ""}
-            >
-              🟠 Necessary
-            </button>
-            <button
-              onClick={() => handleFilterClick("Priority: Urgent")}
-              className={activeFilter === "Priority: Urgent" ? "active" : ""}
-            >
-              🔴 Urgent
-            </button>
+            <h5>Filter by Priority</h5>
+            <div className="priority-items">
+              <button
+                onClick={() => handleFilterClick("Normal")}
+                className={`btn-filter  ${
+                  activeFilter === "Normal" ? "active" : ""
+                }`}
+              >
+                Normal
+              </button>
+              <button
+                onClick={() => handleFilterClick("Necessary")}
+                className={`btn-filter  ${
+                  activeFilter === "Priority: Necessary" ? "active" : ""
+                }`}
+              >
+                Necessary
+              </button>
+              <button
+                onClick={() => handleFilterClick("Urgent")}
+                className={`btn-filter  ${
+                  activeFilter === "Priority: Urgent" ? "active" : ""
+                }`}
+              >
+                Urgent
+              </button>
+            </div>
           </div>
           <div className="category">
-            <button
-              onClick={() => handleFilterClick("Category: Home")}
-              className={activeFilter === "Category: Home" ? "active" : ""}
-            >
-              <MdHome /> Home
-            </button>
-            <button
-              onClick={() => handleFilterClick("Category: Family")}
-              className={activeFilter === "Category: Family" ? "active" : ""}
-            >
-              <MdOutlineFamilyRestroom /> Family
-            </button>
-            <button
-              onClick={() => handleFilterClick("Category: Health")}
-              className={activeFilter === "Category: Health" ? "active" : ""}
-            >
-              <MdHealthAndSafety /> Health
-            </button>
+            <h5>Filter by Category</h5>
+            <div className="category-items">
+              <button
+                onClick={() => handleFilterClick("Home")}
+                className={`btn-filter  ${
+                  activeFilter === "Category: Home" ? "active" : ""
+                }`}
+              >
+                <MdHome /> Home
+              </button>
+              <button
+                onClick={() => handleFilterClick("Family")}
+                className={`btn-filter  ${
+                  activeFilter === "Category: Family" ? "active" : ""
+                }`}
+              >
+                <MdOutlineFamilyRestroom /> Family
+              </button>
+              <button
+                onClick={() => handleFilterClick("Health")}
+                className={`btn-filter  ${
+                  activeFilter === "Category: Health" ? "active" : ""
+                }`}
+              >
+                <MdHealthAndSafety /> Health
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -5,7 +5,7 @@ import {
   useEffect,
   ReactNode,
 } from "react";
- 
+
 interface Task {
   id: string;
   title: string;
@@ -15,8 +15,9 @@ interface Task {
   category: string;
   priority: string;
   completed: boolean;
+  createdAt: string;
 }
- 
+
 interface TasksContextType {
   tasks: Task[];
   addTask: (task: Task) => void;
@@ -24,25 +25,33 @@ interface TasksContextType {
   filterTasks: () => Task[];
   setFilter: (filter: string) => void;
 }
- 
+
 const TasksContext = createContext<TasksContextType | undefined>(undefined);
- 
+
 export const TasksProvider = ({ children }: { children: ReactNode }) => {
   const [tasks, setTasks] = useState<Task[]>(() => {
     const savedTasks = localStorage.getItem("tasks");
-    return savedTasks ? JSON.parse(savedTasks) : [];
+    const initialTasks = savedTasks ? JSON.parse(savedTasks) : [];
+    return initialTasks.map((task: Task) => ({
+      ...task,
+      createdAt: task.createdAt || new Date().toISOString(),
+    }));
   });
- 
+
   const [filter, setFilter] = useState<string>("Latest");
- 
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
- 
+
   const addTask = (newTask: Task) => {
-    setTasks((prevTasks) => [...prevTasks, newTask]);
+    const taskWithTimestamp = {
+      ...newTask,
+      createdAt: new Date().toISOString(),
+    };
+    setTasks((prevTasks) => [...prevTasks, taskWithTimestamp]);
   };
- 
+
   const toggleTaskCompletion = (id: string) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
@@ -50,37 +59,54 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
       )
     );
   };
- 
+
   const filterTasks = (): Task[] => {
     switch (filter) {
       case "Latest":
-        return tasks.slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        return tasks
+          .slice()
+          .sort(
+            (a, b) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
       case "Upcoming":
-        return tasks.slice().sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-      case "Priority: Normal":
+        return tasks
+          .slice()
+          .filter(
+            (task) =>
+              new Date(`${task.date}T${task.time}`).getTime() > Date.now()
+          ) // Only upcoming tasks
+          .sort((a, b) => {
+            const dateTimeA = new Date(`${a.date}T${a.time}`).getTime();
+            const dateTimeB = new Date(`${b.date}T${b.time}`).getTime();
+            return dateTimeA - dateTimeB;
+          });
+      case "Normal":
         return tasks.filter((task) => task.priority === "Normal");
-      case "Priority: Necessary":
+      case "Necessary":
         return tasks.filter((task) => task.priority === "Necessary");
-      case "Priority: Urgent":
+      case "Urgent":
         return tasks.filter((task) => task.priority === "Urgent");
-      case "Category: Home":
+      case "Home":
         return tasks.filter((task) => task.category === "Home");
-      case "Category: Family":
+      case "Family":
         return tasks.filter((task) => task.category === "Family");
-      case "Category: Health":
+      case "Health":
         return tasks.filter((task) => task.category === "Health");
       default:
         return tasks;
     }
   };
- 
+
   return (
-<TasksContext.Provider value={{ tasks, addTask, toggleTaskCompletion, filterTasks, setFilter }}>
+    <TasksContext.Provider
+      value={{ tasks, addTask, toggleTaskCompletion, filterTasks, setFilter }}
+    >
       {children}
-</TasksContext.Provider>
+    </TasksContext.Provider>
   );
 };
- 
+
 export const useTasks = () => {
   const context = useContext(TasksContext);
   if (!context) {
