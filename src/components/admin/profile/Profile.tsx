@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Profile.scss";
 
 type ProfileProps = {
@@ -7,11 +7,17 @@ type ProfileProps = {
 
 const Profile = ({ setViewChange }: ProfileProps) => {
   const [showModal, setShowModal] = useState(false);
+  const [userName, setUserName] = useState<string | null>(null);
 
   const handleDeleteUser = () => {
     localStorage.clear();
     window.location.reload();
   };
+
+  useEffect(() => {
+    const storedUserName = localStorage.getItem("userName");
+    setUserName(storedUserName);
+  }, []);
 
   return (
     <div className="profile-content">
@@ -19,7 +25,7 @@ const Profile = ({ setViewChange }: ProfileProps) => {
         <div className="profile-img">
           <img src="src/assets/profile.png" alt="Profile" />
         </div>
-        <span>Username</span>
+        <span>{userName}</span>
       </div>
       <hr />
       <div className="profile-main">

@@ -61,6 +61,7 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const filterTasks = (): Task[] => {
+<<<<<<< Updated upstream
     let filteredTasks = [...tasks];
   
     if (filter === "Latest") {
@@ -75,6 +76,42 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
           const dateTimeB = new Date(`${b.date}T${b.time}`).getTime();
           return dateTimeA - dateTimeB;
         });
+=======
+    switch (filter) {
+      case "Latest":
+        return tasks
+          .slice()
+          .sort(
+            (a, b) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+      case "Upcoming":
+        return tasks
+          .slice()
+          .filter(
+            (task) =>
+              new Date(`${task.date}T${task.time}`).getTime() > Date.now()
+          )
+          .sort((a, b) => {
+            const dateTimeA = new Date(`${a.date}T${a.time}`).getTime();
+            const dateTimeB = new Date(`${b.date}T${b.time}`).getTime();
+            return dateTimeA - dateTimeB;
+          });
+      case "Normal":
+        return tasks.filter((task) => task.priority === "Normal");
+      case "Necessary":
+        return tasks.filter((task) => task.priority === "Necessary");
+      case "Urgent":
+        return tasks.filter((task) => task.priority === "Urgent");
+      case "Home":
+        return tasks.filter((task) => task.category === "Home");
+      case "Family":
+        return tasks.filter((task) => task.category === "Family");
+      case "Health":
+        return tasks.filter((task) => task.category === "Health");
+      default:
+        return tasks;
+>>>>>>> Stashed changes
     }
   
     if (filter.startsWith("Priority: ")) {

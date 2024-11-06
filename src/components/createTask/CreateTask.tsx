@@ -62,7 +62,7 @@ const CreateTask = () => {
 
   return (
     <div className="create-task">
-      <button onClick={handleCreate} className="create-btn btn">
+      <button onClick={handleCreate} className="create-btn btn-action">
         New task
       </button>
       {open && (

@@ -111,6 +111,22 @@ span, p {
   font-weight: 600;
 }
 
+.btn-action {
+  background-color: var(--action);
+  border-radius: var(--br);
+  color: var(--background-color);
+  transition: all 600ms;
+
+  padding: 10px 25px;
+  font-size: 17px;
+  font-weight: 700;
+
+  @include responsive.tablet {
+    font-size: 20px;
+    padding: 7px 17px;
+  }
+}
+
 .btn-filter {
   background-color: var(--foreground-color);
   border-radius: var(--br);
