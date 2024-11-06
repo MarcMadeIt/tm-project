@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./TopBar.scss";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
+import Profile from "../admin/Admin";
 
 type Theme = "light" | "dark";
 
@@ -34,7 +35,7 @@ const TopBar = () => {
         <span>FamilyFlow</span>
       </div>
       <div className="right">
-        <IoMdSettings size={35} />
+        <Profile />
       </div>
     </div>
   );

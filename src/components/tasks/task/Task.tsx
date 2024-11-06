@@ -30,7 +30,6 @@ const Task = ({
   priority,
 }: TaskProps) => {
   const { toggleTaskCompletion } = useTasks();
-
   const isoDateTime = new Date(`${date}T${time}`).toISOString();
   const formattedDate = new Date(date).toLocaleDateString("da-DK", {
     day: "2-digit",
