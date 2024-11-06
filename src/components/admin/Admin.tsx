@@ -17,7 +17,7 @@ const Admin = () => {
     <div>
       <div className="admin">
         <button className="admin-open" onClick={toggleAdmin}>
-          <MdPersonOutline size={35} />
+          <MdPersonOutline size={38} />
         </button>
         {adminOpen && (
           <div className="admin-content">
