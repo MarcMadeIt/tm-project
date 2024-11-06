@@ -20,10 +20,17 @@ const Filter = ({ setFilter }: FilterProps) => {
   };
 
   const handleFilterClick = (filter: string) => {
-    setFilter(filter);
     setActiveFilter(filter);
+    if (["Normal", "Necessary", "Urgent"].includes(filter)) {
+      setFilter(`Priority: ${filter}`);
+    } else if (["Home", "Family", "Health"].includes(filter)) {
+      setFilter(`Category: ${filter}`);
+    } else {
+      setFilter(filter);
+    }
     setFilterOpen(false);
   };
+  
 
   return (
     <div className="filter">

@@ -61,42 +61,35 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const filterTasks = (): Task[] => {
-    switch (filter) {
-      case "Latest":
-        return tasks
-          .slice()
-          .sort(
-            (a, b) =>
-              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-          );
-      case "Upcoming":
-        return tasks
-          .slice()
-          .filter(
-            (task) =>
-              new Date(`${task.date}T${task.time}`).getTime() > Date.now()
-          ) // Only upcoming tasks
-          .sort((a, b) => {
-            const dateTimeA = new Date(`${a.date}T${a.time}`).getTime();
-            const dateTimeB = new Date(`${b.date}T${b.time}`).getTime();
-            return dateTimeA - dateTimeB;
-          });
-      case "Normal":
-        return tasks.filter((task) => task.priority === "Normal");
-      case "Necessary":
-        return tasks.filter((task) => task.priority === "Necessary");
-      case "Urgent":
-        return tasks.filter((task) => task.priority === "Urgent");
-      case "Home":
-        return tasks.filter((task) => task.category === "Home");
-      case "Family":
-        return tasks.filter((task) => task.category === "Family");
-      case "Health":
-        return tasks.filter((task) => task.category === "Health");
-      default:
-        return tasks;
+    let filteredTasks = [...tasks];
+  
+    if (filter === "Latest") {
+      filteredTasks.sort(
+        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+    } else if (filter === "Upcoming") {
+      filteredTasks = filteredTasks
+        .filter((task) => new Date(`${task.date}T${task.time}`).getTime() > Date.now())
+        .sort((a, b) => {
+          const dateTimeA = new Date(`${a.date}T${a.time}`).getTime();
+          const dateTimeB = new Date(`${b.date}T${b.time}`).getTime();
+          return dateTimeA - dateTimeB;
+        });
     }
+  
+    if (filter.startsWith("Priority: ")) {
+      const priorityFilter = filter.replace("Priority: ", "");
+      filteredTasks = filteredTasks.filter((task) => task.priority === priorityFilter);
+    }
+  
+    if (filter.startsWith("Category: ")) {
+      const categoryFilter = filter.replace("Category: ", "");
+      filteredTasks = filteredTasks.filter((task) => task.category === categoryFilter);
+    }
+  
+    return filteredTasks;
   };
+  
 
   return (
     <TasksContext.Provider
