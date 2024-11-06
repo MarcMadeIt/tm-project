@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import "./TopBar.scss";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
-import { IoMdSettings } from "react-icons/io";
 import Profile from "../admin/Admin";
 
 type Theme = "light" | "dark";
 
 const TopBar = () => {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>(() => {
+    return (localStorage.getItem("theme") as Theme) || "light";
+  });
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
 
   const toggleTheme = () => {
