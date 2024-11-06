@@ -24,6 +24,7 @@ const CreateTask = () => {
   const [descCharCount, setDescCharCount] = useState(0);
   const maxCharsTitle = 25;
   const maxCharsDesc = 80;
+  const [createdAt, setCreatedAt] = useState("");
 
   const { addTask } = useTasks();
 
@@ -42,6 +43,7 @@ const CreateTask = () => {
       category,
       priority,
       completed: false,
+      createdAt,
     };
 
     addTask(newTask);
@@ -55,6 +57,7 @@ const CreateTask = () => {
     setTitleCharCount(0);
     setDescCharCount(0);
     setOpen(false);
+    setCreatedAt("");
   };
 
   return (
