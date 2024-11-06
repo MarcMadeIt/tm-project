@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.scss";
 import CreateTask from "./components/createTask/CreateTask";
 import Tasks from "./components/tasks/Tasks";
@@ -10,6 +10,17 @@ import Toolbar from "./components/toolbar/Toolbar";
 
 function App() {
   const [view, setView] = useState("tasks");
+
+  useEffect(() => {
+    const savedActionColor = localStorage.getItem("actionColor") || "#A235D9";
+    const savedHoverColor = localStorage.getItem("hoverColor") || "#8C31B9";
+
+    document.documentElement.style.setProperty("--action", savedActionColor);
+    document.documentElement.style.setProperty(
+      "--action-hover",
+      savedHoverColor
+    );
+  }, []);
 
   return (
     <div className="app">

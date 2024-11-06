@@ -1,0 +1,51 @@
+.settings-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+
+    .settings-title {
+        display: flex;
+        align-items: center;
+
+        .btn-back {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+    }
+
+    h5 {
+        color: var(--text-grey);
+    }
+
+    .settings-color {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        
+        .settings-options {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+            
+            .btn-options {
+                padding: 7px 14px;
+                border-radius: var(--br);
+                color: var(--background-color);
+            }   
+        }
+    }
+
+    .settings-username {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .settings-input {
+            width: 100%;
+        }
+    }
+}

@@ -118,13 +118,18 @@ span, p {
   transition: all 600ms;
 
   padding: 10px 25px;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 700;
 
   @include responsive.tablet {
-    font-size: 20px;
+    font-size: 17px;
     padding: 7px 17px;
   }
+}
+
+.btn-action:hover {
+  background-color: var(--action-hover);
+  transition: all 600ms;
 }
 
 .btn-filter {
