@@ -1,6 +1,10 @@
 import "./Profile.scss";
 
-const Profile = ({ setViewChange }) => {
+type ProfileProps = {
+  setViewChange: (view: string) => void;
+};
+
+const Profile = ({ setViewChange }: ProfileProps) => {
   return (
     <div className="profile-content">
       <div className="profile-top">
@@ -16,6 +20,12 @@ const Profile = ({ setViewChange }) => {
           onClick={() => setViewChange("settings")}
         >
           Settings
+        </button>
+        <button
+          className="btn-filter"
+          onClick={() => setViewChange("notifications")}
+        >
+          Notifications
         </button>
       </div>
       <hr />

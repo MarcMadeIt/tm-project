@@ -3,6 +3,7 @@ import { MdPersonOutline } from "react-icons/md";
 import "./admin.scss";
 import Profile from "./profile/Profile";
 import Settings from "./settings/Settings";
+import Notifications from "./notifications/Notifications";
 
 const Admin = () => {
   const [adminOpen, setAdminOpen] = useState(false);
@@ -25,6 +26,9 @@ const Admin = () => {
             )}
             {viewChange === "settings" && (
               <Settings setViewChange={setViewChange} />
+            )}
+            {viewChange === "notifications" && (
+              <Notifications setViewChange={setViewChange} />
             )}
           </div>
         )}

@@ -1,12 +1,12 @@
 import { MdArrowBack } from "react-icons/md";
 
-type SettingsProps = {
+type NotificationsProps = {
   setViewChange: (view: string) => void;
 };
 
-const Settings = ({ setViewChange }: SettingsProps) => {
+const Notifications = ({ setViewChange }: NotificationsProps) => {
   return (
-    <div className="settings-content">
+    <div className="notification-content">
       <button onClick={() => setViewChange("profile")}>
         <MdArrowBack size={28} />
       </button>
@@ -14,4 +14,4 @@ const Settings = ({ setViewChange }: SettingsProps) => {
   );
 };
 
-export default Settings;
+export default Notifications;
