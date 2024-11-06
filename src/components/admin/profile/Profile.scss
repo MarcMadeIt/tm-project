@@ -1,3 +1,5 @@
+
+
 .profile-content {
 
     display: flex;
@@ -36,4 +38,36 @@
         align-items: start;
         gap: 10px;
     }
+
+    .confirm {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--background-color);
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+
+
+        .confirm-content {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            gap: 15px;
+          }
+
+
+
+      .confirn-btns {
+        display: flex;
+        gap: 15px;
+      }
+      }
+
+      
 }

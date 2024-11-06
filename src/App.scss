@@ -90,13 +90,12 @@ span, p {
   color: var(--background-color);
   transition: all 600ms;
 
-  padding: 10px 25px;
-  font-size: 20px;
+  padding: 7px 17px;
+  font-size: 17px;
   font-weight: 700;
 
   @include responsive.tablet {
-    padding: 7px 17px;
-    font-size: 17px;
+    font-size: 20px;
   }
 }
 
