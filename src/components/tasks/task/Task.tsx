@@ -8,6 +8,8 @@ import {
 } from "react-icons/md";
 import "./Task.scss";
 import { useTasks } from "../../../context/TasksContext";
+import EditTask from "../../editTask/EditTask";
+import { useState } from "react";
 
 interface TaskProps {
   id: string;
@@ -30,6 +32,8 @@ const Task = ({
   priority,
 }: TaskProps) => {
   const { toggleTaskCompletion } = useTasks();
+  const [isEditing, setIsEditing] = useState(false); // State for at håndtere visning af EditTask
+
   const isoDateTime = new Date(`${date}T${time}`).toISOString();
   const formattedDate = new Date(date).toLocaleDateString("da-DK", {
     day: "2-digit",
@@ -55,12 +59,13 @@ const Task = ({
             )}
             {priority === "Necessary" && (
               <>
-                <img src="src/assets/Necessary.png" alt="" /> Necessary
+                <img src="src/assets/Necessary.png" alt="Necessary Priority" />{" "}
+                Necessary
               </>
             )}
             {priority === "Urgent" && (
               <>
-                <img src="src/assets/Urgent.png" alt="" /> Urgent
+                <img src="src/assets/Urgent.png" alt="Urgent Priority" /> Urgent
               </>
             )}
           </p>
@@ -85,6 +90,9 @@ const Task = ({
           <MdEdit />
         </span>
       </div>
+      {isEditing && (
+        <EditTask taskId={id} closeEdit={() => setIsEditing(false)} />
+      )}
     </div>
   );
 };
