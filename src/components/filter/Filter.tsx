@@ -30,7 +30,6 @@ const Filter = ({ setFilter }: FilterProps) => {
     }
     setFilterOpen(false);
   };
-  
 
   return (
     <div className="filter">
