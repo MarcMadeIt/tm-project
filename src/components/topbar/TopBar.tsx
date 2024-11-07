@@ -22,7 +22,7 @@ const TopBar = () => {
   return (
     <div className="topbar">
       <div className="left">
-        <button onClick={toggleTheme}>
+        <button aria-label="Dark/Light Mode button" onClick={toggleTheme}>
           {theme === "light" ? (
             <MdOutlineDarkMode size={35} />
           ) : (
@@ -34,7 +34,7 @@ const TopBar = () => {
         <div className="logo-img">
           <img src="src/assets/logo-FF.png" alt="logo" />
         </div>
-        <span>FamilyFlow</span>
+        <span role="Title text" aria-label="Logo Name">FamilyFlow</span>
       </div>
       <div className="right">
         <Profile />

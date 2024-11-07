@@ -70,7 +70,7 @@ const Task = ({
             <h3>{title}</h3>
             <p>{desc}</p>
           </div>
-          <span className="task-cat">
+          <span role="Category icons" className="task-cat">
             {category === "Home" && <MdHome />}
             {category === "Family" && <MdOutlineFamilyRestroom />}
             {category === "Health" && <MdHealthAndSafety />}
@@ -78,10 +78,10 @@ const Task = ({
         </div>
       </div>
       <div className="task-action">
-        <span onClick={() => toggleTaskCompletion(id)}>
+        <span role="Button" aria-label="Done button" onClick={() => toggleTaskCompletion(id)}>
           <MdDone />
         </span>
-        <span>
+        <span role="Button" aria-label="Edit button">
           <MdEdit />
         </span>
       </div>

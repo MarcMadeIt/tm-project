@@ -34,7 +34,7 @@ const FirstVisit = () => {
               <img src="src/assets/logo-FF.png" alt="logo" />
             </div>
             <div className="fv-logoname">
-              <span>FamilyFlow</span>
+              <span role="Title text" aria-label="Logo Name">FamilyFlow</span>
             </div>
           </div>
           <form className="fv-content">
