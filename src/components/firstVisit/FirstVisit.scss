@@ -35,9 +35,7 @@
             }
         }
     }
-
-
-
+    
     .fv-content {
         background-color: var(--background-color);
         border: 3px solid var(--foreground-color);
@@ -52,6 +50,10 @@
 
         p {
             width: 90%;
+        }
+
+        .error-text {
+            font-size: 12px;   
         }
         
 

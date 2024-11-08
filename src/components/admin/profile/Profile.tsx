@@ -23,9 +23,9 @@ const Profile = ({ setViewChange }: ProfileProps) => {
     <div className="profile-content">
       <div className="profile-top">
         <div className="profile-img">
-          <img src="src/assets/profile.png" alt="Profile" />
+          <img src="src/assets/profile.png" alt="profile picture" />
         </div>
-        <span>{userName}</span>
+        <h3 aria-label="username">{userName}</h3>
       </div>
       <hr />
       <div className="profile-main">

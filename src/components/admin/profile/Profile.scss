@@ -15,6 +15,9 @@
         display: flex;
         align-items: center;
         gap: 15px;
+        font-weight: 800;
+    
+        
 
         .profile-img {
             width: 40px;
@@ -40,6 +43,17 @@
 
     .profile-bottom {
         padding-left: 7px;
+
+
+        button {
+            color: var(--text-color);
+            transition: all 300ms;
+
+            &:hover {
+                color: var(--text-grey);
+                transition: all 300ms;
+            }
+        }
     }
 
     .confirm {

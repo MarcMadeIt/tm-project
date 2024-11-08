@@ -83,7 +83,11 @@ const Task = ({
         </div>
       </div>
       <div className="task-action">
-        <span role="Button" aria-label="Done button" onClick={() => toggleTaskCompletion(id)}>
+        <span
+          role="Button"
+          aria-label="Done button"
+          onClick={() => toggleTaskCompletion(id)}
+        >
           <MdDone />
         </span>
         <span role="Button" aria-label="Edit button">

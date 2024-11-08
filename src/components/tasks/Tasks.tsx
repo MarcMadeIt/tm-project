@@ -1,3 +1,4 @@
+import { MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
 import { useTasks } from "../../context/TasksContext";
 import Task from "./task/Task";
 import "./Tasks.scss";
@@ -26,7 +27,16 @@ const Tasks = () => {
             />
           ))
       ) : (
-        <p>No general tasks found.</p>
+        <div className="notask">
+          <h3>It looks a bit empty here!</h3>
+          <p>
+            Click <span className="notask-action">"New Task"</span> to get
+            started.
+          </p>
+          <span className="notask-arrow">
+            <MdOutlineKeyboardDoubleArrowDown />
+          </span>
+        </div>
       )}
     </div>
   );

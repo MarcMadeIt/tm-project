@@ -9,10 +9,40 @@
     align-items: center;
     justify-content: center;
     
-
-    @include responsive.tablet {
+    .notask {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 15px;
+        height: 400px;
+        position: relative;
+        
+        h3 {
+            font-size: 23px;
+            @include responsive.tablet {
+                font-size: 23px;
+            }
+        }
+    
+        .notask-action {
+            color: var(--action);
+            font-weight: 800;
+        }
+    
+        .notask-arrow{
+            font-size: 30px;
+    
+            @include responsive.tablet {
+                position: absolute;
+                rotate: 180deg;
+                top: 100px;
+                font-size: 40px;
+            }
+        }
     }
 }
+
 
 .task {
     width: 100%;
@@ -30,9 +60,11 @@
         .task-card {
             border-radius: var(--border-radius-sp-left);
             flex-direction: row-reverse;
+            // border-right: .8px solid var(--action-hover);
 
             @include responsive.tablet  {
                 border-radius: var(--br-container);
+                border: none;
             }
 
             .task-top {
@@ -54,6 +86,7 @@
 
         .task-card {
             border-radius: var(--border-radius-sp-right);
+            // border-left: .8px solid var(--action-hover);
             
             @include responsive.tablet  {
                 border-radius: var(--br-container);
@@ -69,6 +102,8 @@
             }
         }
     }
+
+    
 }
 
 @keyframes slideInFromLeft {

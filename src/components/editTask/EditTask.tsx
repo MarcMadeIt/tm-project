@@ -28,10 +28,10 @@ const EditTask = ({ taskId, closeEdit }: EditTaskProps) => {
   const [time, setTime] = useState(task.time || "");
   const [category, setCategory] = useState(task.category || "");
   const [priority, setPriority] = useState(task.priority || "Normal");
-  const maxCharsTitle = 25;
-  const maxCharsDesc = 80;
   const [titleCharCount, setTitleCharCount] = useState(title.length);
   const [descCharCount, setDescCharCount] = useState(desc.length);
+  const maxCharsTitle = 25;
+  const maxCharsDesc = 80;
 
   const handleUpdateTask = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
