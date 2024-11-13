@@ -18,12 +18,18 @@ interface Task {
   createdAt: string;
 }
 
+interface FilterCriteria {
+  sortBy: string;
+  priority?: string;
+  category?: string;
+}
+
 interface TasksContextType {
   tasks: Task[];
   addTask: (task: Task) => void;
   toggleTaskCompletion: (id: string) => void;
   filterTasks: () => Task[];
-  setFilter: (filter: string) => void;
+  setFilter: (filter: Partial<FilterCriteria>) => void;
 }
 
 const TasksContext = createContext<TasksContextType | undefined>(undefined);
@@ -38,7 +44,11 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
     }));
   });
 
-  const [filter, setFilter] = useState<string>("Latest");
+  const [filter, setFilter] = useState<FilterCriteria>({ sortBy: "Latest" });
+
+  const setFilterCriteria = (criteria: Partial<FilterCriteria>) => {
+    setFilter((prevFilter) => ({ ...prevFilter, ...criteria }));
+  };
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -63,12 +73,13 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
   const filterTasks = (): Task[] => {
     let filteredTasks = [...tasks];
 
-    if (filter === "Latest") {
+    // Apply sorting based on `sortBy`
+    if (filter.sortBy === "Latest") {
       filteredTasks.sort(
         (a, b) =>
           new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       );
-    } else if (filter === "Upcoming") {
+    } else if (filter.sortBy === "Upcoming") {
       filteredTasks = filteredTasks
         .filter(
           (task) => new Date(`${task.date}T${task.time}`).getTime() > Date.now()
@@ -80,17 +91,17 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         });
     }
 
-    if (filter.startsWith("Priority: ")) {
-      const priorityFilter = filter.replace("Priority: ", "");
+    // Apply priority filtering if set
+    if (filter.priority) {
       filteredTasks = filteredTasks.filter(
-        (task) => task.priority === priorityFilter
+        (task) => task.priority === filter.priority
       );
     }
 
-    if (filter.startsWith("Category: ")) {
-      const categoryFilter = filter.replace("Category: ", "");
+    // Apply category filtering if set
+    if (filter.category) {
       filteredTasks = filteredTasks.filter(
-        (task) => task.category === categoryFilter
+        (task) => task.category === filter.category
       );
     }
 
@@ -99,7 +110,7 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <TasksContext.Provider
-      value={{ tasks, addTask, toggleTaskCompletion, filterTasks, setFilter }}
+      value={{ tasks, addTask, toggleTaskCompletion, filterTasks, setFilter: setFilterCriteria }}
     >
       {children}
     </TasksContext.Provider>

@@ -12,7 +12,6 @@ const Tasks = () => {
       {filteredTasks.filter((task) => !task.completed).length > 0 ? (
         filteredTasks
           .filter((task) => !task.completed)
-          .reverse()
           .map((task, index) => (
             <Task
               key={`${task.id}-${index}`}
