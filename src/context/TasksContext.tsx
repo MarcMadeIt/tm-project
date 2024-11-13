@@ -28,7 +28,7 @@ interface TasksContextType {
   tasks: Task[];
   addTask: (task: Task) => void;
   toggleTaskCompletion: (id: string) => void;
-  deleteTask: (id: string) => void; // Add deleteTask method
+  deleteTask: (id: string) => void;
   filterTasks: () => Task[];
   setFilter: (filter: Partial<FilterCriteria>) => void;
 }
@@ -73,15 +73,12 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
 
   // Delete task function
   const deleteTask = (id: string) => {
-    setTasks((prevTasks) =>
-      prevTasks.filter((task) => task.id !== id)
-    );
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
 
   const filterTasks = (): Task[] => {
     let filteredTasks = [...tasks];
 
-    // Apply sorting based on `sortBy`
     if (filter.sortBy === "Latest") {
       filteredTasks.sort(
         (a, b) =>
@@ -122,7 +119,7 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         tasks,
         addTask,
         toggleTaskCompletion,
-        deleteTask, // Provide the deleteTask function
+        deleteTask,
         filterTasks,
         setFilter: setFilterCriteria,
       }}
