@@ -8,13 +8,11 @@ const CreateTask = () => {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const currentDate = new Date();
-  const formattedDate = currentDate.toISOString().split("T")[0];
-  const formattedTime = currentDate
-    .toTimeString()
-    .split(":")
-    .slice(0, 2)
-    .join(":");
+
+  // Set the initial date and time to 10 minutes in the future
+  const tenMinutesLater = new Date(Date.now() + 10 * 60000);
+  const formattedDate = tenMinutesLater.toISOString().split("T")[0];
+  const formattedTime = tenMinutesLater.toTimeString().split(":").slice(0, 2).join(":");
 
   const [date, setDate] = useState(formattedDate);
   const [time, setTime] = useState(formattedTime);
@@ -24,7 +22,6 @@ const CreateTask = () => {
   const [descCharCount, setDescCharCount] = useState(0);
   const maxCharsTitle = 25;
   const maxCharsDesc = 80;
-  const [createdAt, setCreatedAt] = useState("");
 
   const { addTask } = useTasks();
 
@@ -33,6 +30,16 @@ const CreateTask = () => {
 
   const handleAddTask = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const currentDateTime = new Date();
+    const minDeadline = new Date(currentDateTime.getTime() + 9 * 60000); // current time + 9 minutes
+
+    const selectedDeadline = new Date(`${date}T${time}`);
+
+    if (selectedDeadline <= minDeadline) {
+      alert("The deadline must be at least 10 minutes from now.");
+      return;
+    }
 
     const newTask = {
       id: uuidv4(),
@@ -43,11 +50,12 @@ const CreateTask = () => {
       category,
       priority,
       completed: false,
-      createdAt,
+      createdAt: currentDateTime.toISOString(),
     };
 
     addTask(newTask);
 
+    // Reset form fields
     setTitle("");
     setDesc("");
     setDate(formattedDate);
@@ -57,7 +65,6 @@ const CreateTask = () => {
     setTitleCharCount(0);
     setDescCharCount(0);
     setOpen(false);
-    setCreatedAt("");
   };
 
   return (
