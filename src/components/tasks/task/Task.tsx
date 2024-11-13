@@ -32,7 +32,7 @@ const Task = ({
   priority,
 }: TaskProps) => {
   const { toggleTaskCompletion } = useTasks();
-  const [isEditing, setIsEditing] = useState(false); // State for at håndtere visning af EditTask
+  const [isEditing, setIsEditing] = useState(false);
 
   const isoDateTime = new Date(`${date}T${time}`).toISOString();
   const formattedDate = new Date(date).toLocaleDateString("da-DK", {
@@ -90,7 +90,11 @@ const Task = ({
         >
           <MdDone />
         </span>
-        <span role="Button" aria-label="Edit button">
+        <span
+          role="Button"
+          aria-label="Edit button"
+          onClick={() => setIsEditing(true)}
+        >
           <MdEdit />
         </span>
       </div>
