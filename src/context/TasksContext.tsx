@@ -44,7 +44,7 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
     }));
   });
 
-  const [filter, setFilter] = useState<FilterCriteria>({ sortBy: "Latest" });
+  const [filter, setFilter] = useState<FilterCriteria>({ sortBy: "Upcoming" });
 
   const setFilterCriteria = (criteria: Partial<FilterCriteria>) => {
     setFilter((prevFilter) => ({ ...prevFilter, ...criteria }));
@@ -110,7 +110,13 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <TasksContext.Provider
-      value={{ tasks, addTask, toggleTaskCompletion, filterTasks, setFilter: setFilterCriteria }}
+      value={{
+        tasks,
+        addTask,
+        toggleTaskCompletion,
+        filterTasks,
+        setFilter: setFilterCriteria,
+      }}
     >
       {children}
     </TasksContext.Provider>

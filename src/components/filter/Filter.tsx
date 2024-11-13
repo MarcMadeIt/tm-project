@@ -1,13 +1,14 @@
-import { MdFilterList, MdHealthAndSafety, MdHome, MdOutlineFamilyRestroom } from "react-icons/md";
+import {
+  MdFilterList,
+  MdHealthAndSafety,
+  MdHome,
+  MdOutlineFamilyRestroom,
+} from "react-icons/md";
 import { useState } from "react";
 import { useTasks } from "../../context/TasksContext"; // Adjust the path to your context file
 import "./Filter.scss";
 
-interface FilterProps {
-  setFilter: (filter: string) => void;
-}
-
-const Filter = ({ setFilter }: FilterProps) => {
+const Filter = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<string>("Upcoming");
 
@@ -19,7 +20,7 @@ const Filter = ({ setFilter }: FilterProps) => {
 
   const handleFilterClick = (filter: string) => {
     setActiveFilter(filter);
-    
+
     if (["Normal", "Necessary", "Urgent"].includes(filter)) {
       setFilterCriteria({ priority: filter }); // Update priority
     } else if (["Home", "Family", "Health"].includes(filter)) {
@@ -33,7 +34,11 @@ const Filter = ({ setFilter }: FilterProps) => {
 
   return (
     <div className="filter">
-      <button aria-label="Filter button" className="filter-open " onClick={toggleFilter}>
+      <button
+        aria-label="Filter button"
+        className="filter-open "
+        onClick={toggleFilter}
+      >
         <span>{activeFilter}</span>
         <MdFilterList size={25} />
       </button>
@@ -45,14 +50,18 @@ const Filter = ({ setFilter }: FilterProps) => {
               <button
                 aria-label="Latest button"
                 onClick={() => handleFilterClick("Latest")}
-                className={`btn-filter ${activeFilter === "Latest" ? "active" : ""}`}
+                className={`btn-filter ${
+                  activeFilter === "Latest" ? "active" : ""
+                }`}
               >
                 Latest
               </button>
               <button
                 aria-label="Upcoming button"
                 onClick={() => handleFilterClick("Upcoming")}
-                className={`btn-filter ${activeFilter === "Upcoming" ? "active" : ""}`}
+                className={`btn-filter ${
+                  activeFilter === "Upcoming" ? "active" : ""
+                }`}
               >
                 Upcoming
               </button>
@@ -64,21 +73,27 @@ const Filter = ({ setFilter }: FilterProps) => {
               <button
                 aria-label="Priority Normal button"
                 onClick={() => handleFilterClick("Normal")}
-                className={`btn-filter ${activeFilter === "Normal" ? "active" : ""}`}
+                className={`btn-filter ${
+                  activeFilter === "Normal" ? "active" : ""
+                }`}
               >
                 Normal
               </button>
               <button
                 aria-label="Priority Necessary button"
                 onClick={() => handleFilterClick("Necessary")}
-                className={`btn-filter ${activeFilter === "Necessary" ? "active" : ""}`}
+                className={`btn-filter ${
+                  activeFilter === "Necessary" ? "active" : ""
+                }`}
               >
                 Necessary
               </button>
               <button
                 aria-label="Priority Urgent button"
                 onClick={() => handleFilterClick("Urgent")}
-                className={`btn-filter ${activeFilter === "Urgent" ? "active" : ""}`}
+                className={`btn-filter ${
+                  activeFilter === "Urgent" ? "active" : ""
+                }`}
               >
                 Urgent
               </button>
@@ -90,21 +105,27 @@ const Filter = ({ setFilter }: FilterProps) => {
               <button
                 aria-label="Category Home button"
                 onClick={() => handleFilterClick("Home")}
-                className={`btn-filter ${activeFilter === "Home" ? "active" : ""}`}
+                className={`btn-filter ${
+                  activeFilter === "Home" ? "active" : ""
+                }`}
               >
                 <MdHome /> Home
               </button>
               <button
                 aria-label="Category Family button"
                 onClick={() => handleFilterClick("Family")}
-                className={`btn-filter ${activeFilter === "Family" ? "active" : ""}`}
+                className={`btn-filter ${
+                  activeFilter === "Family" ? "active" : ""
+                }`}
               >
                 <MdOutlineFamilyRestroom /> Family
               </button>
               <button
                 aria-label="Category Health button"
                 onClick={() => handleFilterClick("Health")}
-                className={`btn-filter ${activeFilter === "Health" ? "active" : ""}`}
+                className={`btn-filter ${
+                  activeFilter === "Health" ? "active" : ""
+                }`}
               >
                 <MdHealthAndSafety /> Health
               </button>
