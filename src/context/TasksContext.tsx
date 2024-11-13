@@ -28,6 +28,7 @@ interface TasksContextType {
   tasks: Task[];
   addTask: (task: Task) => void;
   toggleTaskCompletion: (id: string) => void;
+  deleteTask: (id: string) => void; // Add deleteTask method
   filterTasks: () => Task[];
   setFilter: (filter: Partial<FilterCriteria>) => void;
 }
@@ -67,6 +68,13 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
       prevTasks.map((task) =>
         task.id === id ? { ...task, completed: !task.completed } : task
       )
+    );
+  };
+
+  // Delete task function
+  const deleteTask = (id: string) => {
+    setTasks((prevTasks) =>
+      prevTasks.filter((task) => task.id !== id)
     );
   };
 
@@ -114,6 +122,7 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         tasks,
         addTask,
         toggleTaskCompletion,
+        deleteTask, // Provide the deleteTask function
         filterTasks,
         setFilter: setFilterCriteria,
       }}

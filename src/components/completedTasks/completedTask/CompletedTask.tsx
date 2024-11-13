@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  MdDelete,
   MdHealthAndSafety,
   MdHome,
   MdOutlineAccessTime,
@@ -27,8 +28,9 @@ const CompletedTask = ({
   time,
   category,
 }: TaskProps) => {
-  const { toggleTaskCompletion } = useTasks();
-  const [Confirm, setConfirm] = useState(false);
+  const { toggleTaskCompletion, deleteTask } = useTasks();
+  const [confirmRestore, setConfirmRestore] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   const isoDateTime = new Date(`${date}T${time}`).toISOString();
   const formattedDate = new Date(date).toLocaleDateString("da-DK", {
@@ -38,16 +40,29 @@ const CompletedTask = ({
   });
 
   const handleRestoreClick = () => {
-    setConfirm(true);
+    setConfirmRestore(true);
   };
 
-  const confirmRestore = () => {
+  const handleDeleteClick = () => {
+    setConfirmDelete(true);
+  };
+
+  const confirmRestoreTask = () => {
     toggleTaskCompletion(id);
-    setConfirm(false);
+    setConfirmRestore(false);
+  };
+
+  const confirmDeleteTask = () => {
+    deleteTask(id);
+    setConfirmDelete(false);
   };
 
   const cancelRestore = () => {
-    setConfirm(false);
+    setConfirmRestore(false);
+  };
+
+  const cancelDelete = () => {
+    setConfirmDelete(false);
   };
 
   return (
@@ -60,10 +75,16 @@ const CompletedTask = ({
               {formattedDate} kl. {time}
             </time>
           </p>
-          <button className="restore-btn" onClick={handleRestoreClick}>
-            <MdRestartAlt size={22} />
-            <span>Restore</span>
-          </button>
+          <div className="buttons">
+            <button className="restore-btn" onClick={handleRestoreClick}>
+              <MdRestartAlt size={22} />
+              <span>Restore</span>
+            </button>
+            <button className="delete-btn" onClick={handleDeleteClick}>
+              <MdDelete size={22} />
+              <span>Delete</span>
+            </button>
+          </div>
         </div>
         <div className="completed-bottom">
           <h3>{title}</h3>
@@ -74,15 +95,30 @@ const CompletedTask = ({
             {category === "Health" && <MdHealthAndSafety />}
           </span>
         </div>
-        {Confirm && (
+        {confirmRestore && (
           <div className="confirm">
             <div className="confirm-content">
               <p>Are you sure you want to restore?</p>
               <div className="confirm-btn">
-                <button className="btn " onClick={confirmRestore}>
+                <button className="btn" onClick={confirmRestoreTask}>
                   Yes
                 </button>
-                <button className="btn " onClick={cancelRestore}>
+                <button className="btn" onClick={cancelRestore}>
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        {confirmDelete && (
+          <div className="confirm">
+            <div className="confirm-content">
+              <p>Are you sure you want to delete?</p>
+              <div className="confirm-btn">
+                <button className="btn" onClick={confirmDeleteTask}>
+                  Yes
+                </button>
+                <button className="btn" onClick={cancelDelete}>
                   No
                 </button>
               </div>
