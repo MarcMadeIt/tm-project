@@ -78,11 +78,11 @@ const CompletedTask = ({
           <div className="buttons">
             <button className="restore-btn" onClick={handleRestoreClick}>
               <MdRestartAlt size={22} />
-              <span>Restore</span>
+              <span className="btn-desktop">Restore</span>
             </button>
             <button className="delete-btn" onClick={handleDeleteClick}>
               <MdDelete size={22} />
-              <span>Delete</span>
+              <span className="btn-desktop">Delete</span>
             </button>
           </div>
         </div>
@@ -98,6 +98,7 @@ const CompletedTask = ({
         {confirmRestore && (
           <div className="confirm">
             <div className="confirm-content">
+              <h2>Restore</h2>
               <p>Are you sure you want to restore?</p>
               <div className="confirm-btn">
                 <button className="btn" onClick={confirmRestoreTask}>
@@ -113,6 +114,7 @@ const CompletedTask = ({
         {confirmDelete && (
           <div className="confirm">
             <div className="confirm-content">
+              <h2>Delete</h2>
               <p>Are you sure you want to delete?</p>
               <div className="confirm-btn">
                 <button className="btn" onClick={confirmDeleteTask}>

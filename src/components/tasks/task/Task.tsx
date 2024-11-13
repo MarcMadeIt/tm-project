@@ -42,66 +42,73 @@ const Task = ({
   });
 
   return (
-    <div className="task">
-      <div className="task-card">
-        <div className="task-top">
-          <p className="deadline">
-            <MdOutlineAccessTime />
-            <time dateTime={isoDateTime}>
-              {formattedDate} kl. {time}
-            </time>
-          </p>
-          <p className="task-prio">
-            {priority === "Normal" && (
-              <>
-                <img src="src/assets/Normal.png" alt="Normal Priority" /> Normal
-              </>
-            )}
-            {priority === "Necessary" && (
-              <>
-                <img src="src/assets/Necessary.png" alt="Necessary Priority" />{" "}
-                Necessary
-              </>
-            )}
-            {priority === "Urgent" && (
-              <>
-                <img src="src/assets/Urgent.png" alt="Urgent Priority" /> Urgent
-              </>
-            )}
-          </p>
-        </div>
-        <div className="task-bottom">
-          <div className="task-content">
-            <h3>{title}</h3>
-            <p>{desc}</p>
+    <>
+      <div className="task">
+        <div className="task-card">
+          <div className="task-top">
+            <p className="deadline">
+              <MdOutlineAccessTime />
+              <time dateTime={isoDateTime}>
+                {formattedDate} kl. {time}
+              </time>
+            </p>
+            <p className="task-prio">
+              {priority === "Normal" && (
+                <>
+                  <img src="src/assets/Normal.png" alt="Normal Priority" />{" "}
+                  Normal
+                </>
+              )}
+              {priority === "Necessary" && (
+                <>
+                  <img
+                    src="src/assets/Necessary.png"
+                    alt="Necessary Priority"
+                  />{" "}
+                  Necessary
+                </>
+              )}
+              {priority === "Urgent" && (
+                <>
+                  <img src="src/assets/Urgent.png" alt="Urgent Priority" />{" "}
+                  Urgent
+                </>
+              )}
+            </p>
           </div>
-          <span role="Category icons" className="task-cat">
-            {category === "Home" && <MdHome />}
-            {category === "Family" && <MdOutlineFamilyRestroom />}
-            {category === "Health" && <MdHealthAndSafety />}
+          <div className="task-bottom">
+            <div className="task-content">
+              <h3>{title}</h3>
+              <p>{desc}</p>
+            </div>
+            <span role="Category icons" className="task-cat">
+              {category === "Home" && <MdHome />}
+              {category === "Family" && <MdOutlineFamilyRestroom />}
+              {category === "Health" && <MdHealthAndSafety />}
+            </span>
+          </div>
+        </div>
+        <div className="task-action">
+          <span
+            role="Button"
+            aria-label="Done button"
+            onClick={() => toggleTaskCompletion(id)}
+          >
+            <MdDone />
+          </span>
+          <span
+            role="Button"
+            aria-label="Edit button"
+            onClick={() => setIsEditing(true)}
+          >
+            <MdEdit />
           </span>
         </div>
-      </div>
-      <div className="task-action">
-        <span
-          role="Button"
-          aria-label="Done button"
-          onClick={() => toggleTaskCompletion(id)}
-        >
-          <MdDone />
-        </span>
-        <span
-          role="Button"
-          aria-label="Edit button"
-          onClick={() => setIsEditing(true)}
-        >
-          <MdEdit />
-        </span>
       </div>
       {isEditing && (
         <EditTask taskId={id} closeEdit={() => setIsEditing(false)} />
       )}
-    </div>
+    </>
   );
 };
 

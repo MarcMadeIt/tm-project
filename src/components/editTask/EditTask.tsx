@@ -51,6 +51,7 @@ const EditTask = ({ taskId, closeEdit }: EditTaskProps) => {
 
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     closeEdit();
+    window.location.reload();
   };
 
   return (

@@ -1,4 +1,4 @@
-@use '../../../responsive.scss';
+@use "../../../responsive.scss";
 
 .completed-task {
     width: 100%;
@@ -11,7 +11,6 @@
     @include responsive.mini-tablet {
         width: 300px;
     }
-
 
     .completed-card {
         background-color: var(--foreground-color);
@@ -28,17 +27,12 @@
         overflow: hidden;
         width: 100%;
 
-
-       
-            
-            .completed-top {
-                display: flex;
-                justify-content: space-between;
-                flex: 1;
-                gap: 15px;
-                font-size: 13px;
-                
-
+        .completed-top {
+            display: flex;
+            justify-content: space-between;
+            flex: 1;
+            gap: 15px;
+            font-size: 13px;
 
             .deadline {
                 background-color: var(--background-color);
@@ -50,15 +44,38 @@
                 gap: 5px;
             }
 
-            .restore-btn {
-                cursor: pointer;
+            .buttons {
                 display: flex;
-                align-items: center;
-                gap: 5px;
-                font-size: 15px;
-            }
+                gap: 15px;
 
-            
+                .restore-btn {
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    font-size: 15px;
+                }
+
+                .delete-btn {
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    font-size: 15px;
+                }
+
+                .btn-desktop {
+                    display: none;
+
+                    @include responsive.large-mobile{
+                        display: block;
+                    }
+
+                    @include responsive.mini-tablet{
+                        display: none;
+                    }
+                }
+            }
         }
 
         .completed-bottom {
@@ -72,8 +89,6 @@
 
             h3 {
                 font-size: 17px;
-
-                
             }
 
             .completed-cat {
@@ -97,20 +112,18 @@
         align-items: center;
         justify-content: center;
         z-index: 50;
-      }
-      
-      .confirm-content {
+    }
+
+    .confirm-content {
         display: flex;
         flex-direction: column;
         text-align: center;
         align-items: center;
         gap: 15px;
-      }
+    }
 
-      .confirm-btn {
+    .confirm-btn {
         display: flex;
         gap: 15px;
-      }
-      
-
+    }
 }
