@@ -1,42 +1,74 @@
-# React + TypeScript + Vite
+# FamilyFlow - Task Manager Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dette er en README-fil for et skoleprojekt, en task manager-applikation, udviklet med React, TypeScript og Vite.
 
-Currently, two official plugins are available:
+## Projektbeskrivelse
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Task manager-applikationen giver brugere mulighed for at oprette, organisere og redigere deres opgaver. Den er udviklet for at demonstrere grundlæggende og avancerede webudviklingskoncepter ved brug af moderne frontend-teknologier som React.
 
-## Expanding the ESLint configuration
+## Teknologier anvendt
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React** til opbygning af brugergrænsefladen.
+- **TypeScript** for typesikker udvikling.
+- **Vite** som build-værktøj for hurtig udvikling og optimeret produktion.
 
-- Configure the top-level `parserOptions` property like this:
+## Forudsætninger
 
-```js
+Før du kan køre projektet, skal du have følgende installeret:
+
+- **Node.js** (mindst version 14 eller nyere)
+
+Du kan downloade og installere Node.js fra den officielle [Node.js hjemmeside](https://nodejs.org/).
+
+## Installation og opsætning
+
+Følg disse trin for at installere og starte applikationen:
+
+1. **Klon projektet**:
+   ```bash
+   git clone https://github.com/dit-brugernavn/task-manager.git
+   cd task-manager
+   ```
+
+2. **Installer afhængigheder**:
+   ```bash
+   npm install
+   ```
+
+3. **Start udviklingsserveren**:
+   ```bash
+   npm run dev
+   ```
+   Dette vil starte Vite's udviklingsserver. Du kan tilgå applikationen i din browser ved at gå til [http://localhost:5173](http://localhost:5173) (eller den port Vite vælger).
+
+## Byg til produktion
+
+For at bygge projektet til produktion, kan du køre følgende kommando:
+```bash
+npm run build
+```
+Dette vil generere en optimeret version af applikationen i mappen `dist`.
+
+## Kør den optimerede version
+
+For at forhåndsvise den optimerede version, kan du køre:
+```bash
 npm run preview
 ```
+Dette vil starte en lokal server til at vise den byggede version af projektet.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Scripts oversigt
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **`npm run dev`**: Starter udviklingsserveren.
+- **`npm run build`**: Bygger projektet til produktion.
+- **`npm run preview`**: Forhåndsviser den byggede version af projektet.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Licens
+
+Dette projekt er lavet til uddannelsesmæssige formål.
+
+---
+
+Tak fordi du brugte tid på at gennemgå denne README. Held og lykke med projektet!
+
+
