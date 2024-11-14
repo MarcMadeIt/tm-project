@@ -1,3 +1,5 @@
+// Lavet af Sebastian Porsche
+
 import {
   MdFilterList,
   MdHealthAndSafety,
@@ -5,14 +7,14 @@ import {
   MdOutlineFamilyRestroom,
 } from "react-icons/md";
 import { useState } from "react";
-import { useTasks } from "../../context/TasksContext"; // Adjust the path to your context file
+import { useTasks } from "../../context/TasksContext";
 import "./Filter.scss";
 
 const Filter = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<string>("Upcoming");
 
-  const { setFilter: setFilterCriteria } = useTasks(); // Access setFilter from context
+  const { setFilter: setFilterCriteria } = useTasks();
 
   const toggleFilter = () => {
     setFilterOpen(!filterOpen);
@@ -22,11 +24,11 @@ const Filter = () => {
     setActiveFilter(filter);
 
     if (["Normal", "Necessary", "Urgent"].includes(filter)) {
-      setFilterCriteria({ priority: filter }); // Update priority
+      setFilterCriteria({ priority: filter });
     } else if (["Home", "Family", "Health"].includes(filter)) {
-      setFilterCriteria({ category: filter }); // Update category
+      setFilterCriteria({ category: filter });
     } else {
-      setFilterCriteria({ sortBy: filter }); // Update sorting
+      setFilterCriteria({ sortBy: filter });
     }
 
     setFilterOpen(false);

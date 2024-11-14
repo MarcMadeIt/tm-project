@@ -1,4 +1,4 @@
-
+/* Lavet af fælles */
 
 .profile-content {
     display: flex;
@@ -16,8 +16,6 @@
         align-items: center;
         gap: 15px;
         font-weight: 800;
-    
-        
 
         .profile-img {
             width: 40px;
@@ -40,10 +38,8 @@
         gap: 15px;
     }
 
-
     .profile-bottom {
         padding-left: 7px;
-
 
         button {
             color: var(--text-color);
@@ -69,22 +65,17 @@
         justify-content: center;
         z-index: 50;
 
-
         .confirm-content {
             display: flex;
             flex-direction: column;
             text-align: center;
             align-items: center;
             gap: 15px;
-          }
+        }
 
-
-
-      .confirn-btns {
-        display: flex;
-        gap: 15px;
-      }
-      }
-
-      
+        .confirn-btns {
+            display: flex;
+            gap: 15px;
+        }
+    }
 }

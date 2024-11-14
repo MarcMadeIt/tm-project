@@ -1,3 +1,5 @@
+// Lavet af Fælles
+
 import { useState, FormEvent } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { MdClose } from "react-icons/md";
@@ -9,10 +11,13 @@ const CreateTask = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
 
-  // Set the initial date and time to 10 minutes in the future
   const tenMinutesLater = new Date(Date.now() + 10 * 60000);
   const formattedDate = tenMinutesLater.toISOString().split("T")[0];
-  const formattedTime = tenMinutesLater.toTimeString().split(":").slice(0, 2).join(":");
+  const formattedTime = tenMinutesLater
+    .toTimeString()
+    .split(":")
+    .slice(0, 2)
+    .join(":");
 
   const [date, setDate] = useState(formattedDate);
   const [time, setTime] = useState(formattedTime);

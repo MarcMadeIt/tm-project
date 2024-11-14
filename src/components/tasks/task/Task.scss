@@ -1,4 +1,6 @@
-@use '../../../responsive.scss';
+@use "../../../responsive.scss";
+
+/* Lavet af fælles */
 
 .task {
     width: 100%;
@@ -9,7 +11,6 @@
     gap: 10px;
     color: var(--text-color);
     z-index: 1;
-
 
     .task-card {
         flex: 4;
@@ -23,9 +24,8 @@
 
         @include responsive.large-mobile {
             flex: 3;
-            padding: 30px 20px 20px 20px;;
+            padding: 30px 20px 20px 20px;
         }
-
 
         .task-top {
             display: flex;
@@ -35,18 +35,17 @@
             top: 10px;
             font-size: 13px;
 
-            .task-prio  {
+            .task-prio {
                 display: flex;
                 align-items: center;
                 gap: 5px;
-                
+
                 img {
                     width: 14px;
                     height: 14px;
                     opacity: 60%;
                 }
             }
-
 
             .deadline {
                 background-color: var(--foreground-shadow);
@@ -61,8 +60,6 @@
             @include responsive.large-mobile {
                 font-size: 15px;
             }
-
-            
         }
 
         .task-bottom {
@@ -76,7 +73,7 @@
             height: 100%;
 
             @include responsive.tablet {
-               gap: 100px;
+                gap: 100px;
             }
 
             .task-content {
@@ -84,18 +81,16 @@
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
-               
 
                 h3 {
                     font-size: 15px;
-                    
+
                     @include responsive.large-mobile {
                         font-size: 20px;
                     }
 
                     @include responsive.tablet {
                         font-size: 22px;
-                
                     }
                 }
 
@@ -104,7 +99,6 @@
 
                     @include responsive.tablet {
                         font-size: 15px;
-                
                     }
                 }
             }
@@ -118,7 +112,6 @@
             }
         }
     }
-    
 
     .task-action {
         flex: 1;
@@ -132,7 +125,6 @@
             flex-direction: row;
         }
 
-
         span {
             cursor: pointer;
             font-size: 23px;
@@ -145,5 +137,4 @@
             justify-content: center;
         }
     }
-
 }

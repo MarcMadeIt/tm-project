@@ -1,5 +1,6 @@
-@use '../../responsive.scss'; 
+@use "../../responsive.scss";
 
+/* Lavet af fælles */
 
 .fv-modal {
     position: fixed;
@@ -24,18 +25,17 @@
         font-size: 25px;
         font-weight: 700;
 
-        
         .fv-logo {
             width: 100px;
             height: 100px;
-            
+
             img {
                 width: 100%;
                 height: 100%;
             }
         }
     }
-    
+
     .fv-content {
         background-color: var(--background-color);
         border: 3px solid var(--foreground-color);
@@ -53,19 +53,15 @@
         }
 
         .error-text {
-            font-size: 12px;   
+            font-size: 12px;
         }
-        
 
-        @include responsive.large-mobile  {
-
+        @include responsive.large-mobile {
             width: 75%;
         }
 
-        @include responsive.tablet  {
-
+        @include responsive.tablet {
             width: 50%;
         }
-      }
-  }
-  
+    }
+}

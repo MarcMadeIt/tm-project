@@ -1,3 +1,5 @@
+// Lavet af Marc Møller
+
 import { useEffect, useState } from "react";
 import "./Profile.scss";
 

@@ -1,6 +1,6 @@
+/* Lavet af Sebastian Porsche */
 
-@use '../../responsive.scss';
-
+@use "../../responsive.scss";
 
 .completed-tasks {
     width: 100%;
@@ -11,16 +11,13 @@
     align-items: center;
     justify-content: center;
     padding: 15px;
-    
+
     @include responsive.large-mobile {
         flex-wrap: wrap;
         flex-direction: row;
     }
 
-
     @include responsive.tablet {
         padding: 50px;
     }
 }
-
-

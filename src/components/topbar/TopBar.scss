@@ -1,3 +1,4 @@
+/* Lavet af fælles */
 
 .topbar {
     display: flex;
@@ -6,8 +7,6 @@
     height: 70px;
     padding: 10px;
     z-index: 4;
-
-
 
     .center {
         font-size: 25px;
@@ -27,12 +26,9 @@
         }
     }
 
-
-
     .left {
-            .lightIcon {
-                color: white;   
-            }
+        .lightIcon {
+            color: white;
+        }
     }
-
 }

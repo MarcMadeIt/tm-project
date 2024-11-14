@@ -1,4 +1,6 @@
-@use '../../responsive.scss';
+@use "../../responsive.scss";
+
+// Lavet af Marc Møller
 
 .create-task {
     display: flex;
@@ -7,12 +9,9 @@
     z-index: 3;
     position: relative;
 
-
     .create-btn {
         box-shadow: var(--action-hover) 0px 0px 6px 1px;
-        
     }
-
 
     .create-modal {
         position: fixed;
@@ -59,7 +58,6 @@
                 .deadline {
                     display: flex;
                     gap: 30px;
-
                 }
 
                 .indicator {
@@ -78,7 +76,6 @@
                         display: flex;
                         flex-direction: column;
                         gap: 10px;
-
 
                         label {
                             font-size: 13px;

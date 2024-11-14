@@ -1,3 +1,5 @@
+// Lavet af Xenia Andersen
+
 import { useState, useEffect } from "react";
 import { MdArrowBack } from "react-icons/md";
 import "./Settings.scss";

@@ -1,9 +1,10 @@
-@use '../../responsive.scss';
+@use "../../responsive.scss";
+
+/* Lavet af fælles */
 
 .admin {
     position: relative;
     z-index: 40;
-    
 
     .admin-open {
         display: flex;
@@ -17,7 +18,7 @@
         }
     }
 
-    .admin-content{
+    .admin-content {
         display: flex;
         flex-direction: column;
         width: 220px;
@@ -31,10 +32,6 @@
 
         @include responsive.large-mobile {
             right: 0px;
-            
         }
-
-
-        
     }
 }

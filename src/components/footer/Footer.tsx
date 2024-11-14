@@ -1,3 +1,5 @@
+// Lavet af Xenia Andersen
+
 import "./Footer.scss";
 
 const Footer = () => {

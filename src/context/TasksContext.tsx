@@ -6,6 +6,8 @@ import {
   ReactNode,
 } from "react";
 
+// Lavet af Fælles
+
 interface Task {
   id: string;
   title: string;
@@ -18,11 +20,15 @@ interface Task {
   createdAt: string;
 }
 
+// Lavet af Sebastian Porsche
+
 interface FilterCriteria {
   sortBy: string;
   priority?: string;
   category?: string;
 }
+
+// Lavet af Marc Møller
 
 interface TasksContextType {
   tasks: Task[];
@@ -34,6 +40,8 @@ interface TasksContextType {
 }
 
 const TasksContext = createContext<TasksContextType | undefined>(undefined);
+
+// Lavet af Sebastian Porsche
 
 export const TasksProvider = ({ children }: { children: ReactNode }) => {
   const [tasks, setTasks] = useState<Task[]>(() => {
@@ -51,6 +59,8 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
     setFilter((prevFilter) => ({ ...prevFilter, ...criteria }));
   };
 
+  // Lavet af Sebastian Porsche
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
@@ -63,6 +73,7 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
     setTasks((prevTasks) => [...prevTasks, taskWithTimestamp]);
   };
 
+  // Lavet af Fælles
   const toggleTaskCompletion = (id: string) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
@@ -70,11 +81,13 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
       )
     );
   };
+  // Lavet af Xenia Andersen
 
-  // Delete task function
   const deleteTask = (id: string) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
+
+  // Lavet af Sebastian Porsche
 
   const filterTasks = (): Task[] => {
     let filteredTasks = [...tasks];
@@ -96,14 +109,12 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
         });
     }
 
-    // Apply priority filtering if set
     if (filter.priority) {
       filteredTasks = filteredTasks.filter(
         (task) => task.priority === filter.priority
       );
     }
 
-    // Apply category filtering if set
     if (filter.category) {
       filteredTasks = filteredTasks.filter(
         (task) => task.category === filter.category
@@ -112,6 +123,8 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
 
     return filteredTasks;
   };
+
+  // Lavet af Marc Møller
 
   return (
     <TasksContext.Provider
@@ -128,6 +141,8 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
     </TasksContext.Provider>
   );
 };
+
+// Lavet af Marc Møller
 
 export const useTasks = () => {
   const context = useContext(TasksContext);

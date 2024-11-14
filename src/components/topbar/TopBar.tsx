@@ -1,3 +1,5 @@
+// Lavet af Marc Møller
+
 import { useEffect, useState } from "react";
 import "./TopBar.scss";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
@@ -34,7 +36,9 @@ const TopBar = () => {
         <div className="logo-img">
           <img src="src/assets/logo-FF.png" alt="logo" />
         </div>
-        <span role="Title text" aria-label="Logo Name">FamilyFlow</span>
+        <span role="Title text" aria-label="Logo Name">
+          FamilyFlow
+        </span>
       </div>
       <div className="right">
         <Profile />

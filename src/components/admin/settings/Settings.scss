@@ -1,3 +1,5 @@
+/* Lavet af Xenia Andersen */
+
 .settings-content {
     display: flex;
     flex-direction: column;
@@ -24,18 +26,18 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
-        
+
         .settings-options {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             gap: 15px;
-            
+
             .btn-options {
                 padding: 7px 14px;
                 border-radius: var(--br);
                 color: var(--background-color);
-            }   
+            }
         }
     }
 

@@ -1,3 +1,5 @@
+// Lavet af Fælles
+
 import { useState, useEffect } from "react";
 import "./App.scss";
 import CreateTask from "./components/createTask/CreateTask";

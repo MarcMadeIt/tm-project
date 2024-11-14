@@ -1,3 +1,5 @@
+// Lavet af Marc Møller
+
 import { MdArrowBack } from "react-icons/md";
 
 type NotificationsProps = {

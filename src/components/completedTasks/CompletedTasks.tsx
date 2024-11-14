@@ -1,3 +1,5 @@
+//Lavet af Sebastian Porsche + Marc Møller
+
 import { useTasks } from "../../context/TasksContext";
 import CompletedTask from "./completedTask/CompletedTask";
 import "./CompletedTasks.scss";

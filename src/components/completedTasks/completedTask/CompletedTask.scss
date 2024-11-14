@@ -1,5 +1,7 @@
 @use "../../../responsive.scss";
 
+/* Lavet af Sebastian Porsche */
+
 .completed-task {
     width: 100%;
     height: 150px;
@@ -67,11 +69,11 @@
                 .btn-desktop {
                     display: none;
 
-                    @include responsive.large-mobile{
+                    @include responsive.large-mobile {
                         display: block;
                     }
 
-                    @include responsive.mini-tablet{
+                    @include responsive.mini-tablet {
                         display: none;
                     }
                 }

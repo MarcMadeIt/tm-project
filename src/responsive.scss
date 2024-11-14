@@ -1,3 +1,5 @@
+/* Lavet af Marc Møller */
+
 @mixin large-mobile {
     @media (min-width: 500px) {
       @content;

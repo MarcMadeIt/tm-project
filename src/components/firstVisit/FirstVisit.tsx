@@ -1,3 +1,5 @@
+// Lavet af fælles
+
 import { useEffect, useState, FormEvent, ChangeEvent } from "react";
 import "./FirstVisit.scss";
 
@@ -23,7 +25,7 @@ const FirstVisit = () => {
     event.preventDefault();
     if (userName.trim()) {
       localStorage.setItem("userName", userName);
-      localStorage.setItem("hasVisited", "true"); // Gem besøget efter at brugeren har angivet et navn
+      localStorage.setItem("hasVisited", "true");
       setIsModalVisible(false);
     } else {
       setError(true);

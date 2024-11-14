@@ -1,3 +1,5 @@
+// Lavet af Xenia Andersen + Marc Møller
+
 import { useState } from "react";
 import { MdPersonOutline } from "react-icons/md";
 import "./admin.scss";
@@ -16,7 +18,11 @@ const Admin = () => {
   return (
     <div>
       <div className="admin">
-        <button aria-label="Profile button" className="admin-open" onClick={toggleAdmin}>
+        <button
+          aria-label="Profile button"
+          className="admin-open"
+          onClick={toggleAdmin}
+        >
           <MdPersonOutline size={38} />
         </button>
         {adminOpen && (

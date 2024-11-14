@@ -1,3 +1,5 @@
+// Lavet af Marc Møller
+
 import { useState } from "react";
 import { MdClose } from "react-icons/md";
 import "./EditTask.scss";

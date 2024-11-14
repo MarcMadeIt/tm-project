@@ -1,5 +1,6 @@
-@use '../../responsive.scss';
+@use "../../responsive.scss";
 
+/* Lavet af Marc Møller */
 
 .tasks {
     width: 100%;
@@ -9,7 +10,7 @@
     align-items: center;
     justify-content: center;
     z-index: 4;
-    
+
     .notask {
         display: flex;
         align-items: center;
@@ -18,22 +19,22 @@
         gap: 15px;
         height: 400px;
         position: relative;
-        
+
         h3 {
             font-size: 23px;
             @include responsive.tablet {
                 font-size: 23px;
             }
         }
-    
+
         .notask-action {
             color: var(--action);
             font-weight: 800;
         }
-    
-        .notask-arrow{
+
+        .notask-arrow {
             font-size: 30px;
-    
+
             @include responsive.tablet {
                 position: absolute;
                 rotate: 180deg;
@@ -44,14 +45,13 @@
     }
 }
 
-
 .task {
     width: 100%;
     display: flex;
     opacity: 0;
-    animation-duration: 1.5s; 
-    animation-fill-mode: forwards; 
-    animation-timing-function: ease-out; 
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
 
     &:nth-child(even) {
         flex-direction: row;
@@ -63,7 +63,7 @@
             flex-direction: row-reverse;
             // border-right: .8px solid var(--action-hover);
 
-            @include responsive.tablet  {
+            @include responsive.tablet {
                 border-radius: var(--br-container);
                 border: none;
             }
@@ -76,8 +76,6 @@
                 flex-direction: row-reverse;
             }
         }
-
-
     }
 
     &:nth-child(odd) {
@@ -88,8 +86,8 @@
         .task-card {
             border-radius: var(--border-radius-sp-right);
             // border-left: .8px solid var(--action-hover);
-            
-            @include responsive.tablet  {
+
+            @include responsive.tablet {
                 border-radius: var(--br-container);
             }
 
@@ -103,8 +101,6 @@
             }
         }
     }
-
-    
 }
 
 @keyframes slideInFromLeft {

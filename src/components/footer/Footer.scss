@@ -1,4 +1,6 @@
-@use '../../responsive.scss';
+@use "../../responsive.scss";
+
+/* Lavet af Xenia Andersen */
 
 .footer {
     width: 100%;
@@ -11,11 +13,10 @@
     bottom: 5px;
     left: 0;
     right: 0;
-    
+
     @include responsive.tablet {
         display: flex;
     }
-
 
     span {
         display: flex;
