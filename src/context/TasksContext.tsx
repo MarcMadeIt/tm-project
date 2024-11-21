@@ -81,6 +81,7 @@ export const TasksProvider = ({ children }: { children: ReactNode }) => {
       )
     );
   };
+
   // Lavet af Xenia Andersen
 
   const deleteTask = (id: string) => {
