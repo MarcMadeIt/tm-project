@@ -57,23 +57,18 @@ const Task = ({
             <p className="task-prio">
               {priority === "Normal" && (
                 <>
-                  <img src="src/assets/Normal.png" alt="Normal Priority" />{" "}
-                  Normal
+                  <img src="/Normal.png" alt="Normal Priority" /> Normal
                 </>
               )}
               {priority === "Necessary" && (
                 <>
-                  <img
-                    src="src/assets/Necessary.png"
-                    alt="Necessary Priority"
-                  />{" "}
+                  <img src="/Necessary.png" alt="Necessary Priority" />{" "}
                   Necessary
                 </>
               )}
               {priority === "Urgent" && (
                 <>
-                  <img src="src/assets/Urgent.png" alt="Urgent Priority" />{" "}
-                  Urgent
+                  <img src="/Urgent.png" alt="Urgent Priority" /> Urgent
                 </>
               )}
             </p>

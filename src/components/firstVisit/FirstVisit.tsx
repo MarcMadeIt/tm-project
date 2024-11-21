@@ -38,7 +38,7 @@ const FirstVisit = () => {
         <div className="fv-modal">
           <div className="fv-top">
             <div className="fv-logo">
-              <img src="src/assets/logo-FF.png" alt="logo" />
+              <img src="/logo-FF.png" alt="logo" />
             </div>
             <div className="fv-logoname">
               <span role="Title text" aria-label="Logo Name">

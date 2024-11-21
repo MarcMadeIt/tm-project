@@ -34,7 +34,7 @@ const TopBar = () => {
       </div>
       <div className="center">
         <div className="logo-img">
-          <img src="src/assets/logo-FF.png" alt="logo" />
+          <img src="/logo-FF.png" alt="logo" />
         </div>
         <span role="Title text" aria-label="Logo Name">
           FamilyFlow

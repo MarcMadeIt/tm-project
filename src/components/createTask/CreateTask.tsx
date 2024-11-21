@@ -37,7 +37,7 @@ const CreateTask = () => {
     e.preventDefault();
 
     const currentDateTime = new Date();
-    const minDeadline = new Date(currentDateTime.getTime() + 9 * 60000); // current time + 9 minutes
+    const minDeadline = new Date(currentDateTime.getTime() + 5 * 60000); // current time + 9 minutes
 
     const selectedDeadline = new Date(`${date}T${time}`);
 
