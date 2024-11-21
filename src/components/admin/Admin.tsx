@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { MdPersonOutline } from "react-icons/md";
-import "./admin.scss";
+import "./Admin.scss";
 import Profile from "./profile/Profile";
 import Settings from "./settings/Settings";
 import Notifications from "./notifications/Notifications";
